@@ -1,4 +1,3 @@
-import { useEmpleados } from "../hooks/Empleados/useEmpleados";
 import PageTitle from "../ui/PageTitle";
 
 const Test = () => {
