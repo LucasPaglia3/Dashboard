@@ -4,16 +4,18 @@ import { Users } from "lucide-react";
 import { HelpCircle } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import SideBarItem from "./SidebarItem";
+import { Divider } from "@nextui-org/react";
 
 const SideBar = () => {
   const location = useLocation();
   console.log(location.pathname);
   return (
-    <aside className="min-h-screen flex flex-col w-64 border-r-1 items-center border-r">
-      <div className="py-8">
-        <Factory className="size-24 fill-blue-400" />
+    <nav className="h-screen flex flex-col w-16 xl:w-64 border-r-1 items-center border-r">
+      <div className="pt-8 pb-8 xl:pb-14">
+        <Factory className="size-10 xl:size-24 fill-blue-400" />
       </div>
-      <div className="flex flex-col items-center gap-4">
+      <Divider className="w-5/6" />
+      <div className="flex flex-col items-center gap-4 pt-7">
         <SideBarItem icon={<LayoutDashboard />} path={"/"}>
           Dashboard
         </SideBarItem>
@@ -21,7 +23,7 @@ const SideBar = () => {
           Personas
         </SideBarItem>
       </div>
-    </aside>
+    </nav>
   );
 };
 
