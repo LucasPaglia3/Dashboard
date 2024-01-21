@@ -28,16 +28,7 @@ const Horas = () => {
       // Si no lo son. Agregar al array.
       setListaEmp([...listaEmp, newEmployee]);
     } else {
-      toast.error(newEmployee.empleado + " Ya fue agregado.", {
-        position: "top-right",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+      toast.error(newEmployee.empleado + " Ya fue agregado.");
     }
   };
 

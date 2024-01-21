@@ -13,14 +13,14 @@ export const getAllEmpleados = async () => {
 };
 
 export const createHistorial = async (newHistoria) => {
-  const { data, error } = supabase
+  const { data, error } = await supabase
     .from("horasEmpleados")
-    .insert([{ ...newHistoria }])
+    .insert([{ empleadosHoras: newHistoria }])
     .select();
 
   if (error) {
     throw new Error("Could not insert into 'horasEmpleados'.");
   }
 
-  return { data };
+  return data;
 };

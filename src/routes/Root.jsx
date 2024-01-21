@@ -17,7 +17,7 @@ const Root = () => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme="light"
+          theme="colored"
         />
         <SideBar />
         <main className="p-12 bg-gray-50 grow">

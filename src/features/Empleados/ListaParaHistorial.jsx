@@ -1,9 +1,13 @@
 import { Button } from "@nextui-org/react";
+import { useCreateHistorial } from "./useCreateHistorial";
 
 const ListaParaHistorial = ({ listaEmp, fullList }) => {
+  const { createHistorial, isPending } = useCreateHistorial();
+
   // Guarda listado en bd.
   const finalizarListado = () => {
-    console.log(JSON.stringify(listaEmp));
+    console.log(listaEmp);
+    createHistorial(listaEmp);
   };
 
   return (
