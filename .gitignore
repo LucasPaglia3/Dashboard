@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Supabase files.
-./src/services/supabase.js
+src/services/supabase.js
