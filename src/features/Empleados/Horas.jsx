@@ -35,7 +35,7 @@ const Horas = () => {
 
   return (
     <>
-      <div className="w-full flex gap-8">
+      <div className="w-full h-64 flex gap-8">
         <FormAgregar onSubmit={onSubmit} fullList={fullList} emp={emp} />
         <Divider orientation="vertical" className=" h-auto" />
         <ListaParaHistorial listaEmp={listaEmp} fullList={fullList} />

@@ -20,8 +20,10 @@ const Root = () => {
           theme="colored"
         />
         <SideBar />
-        <main className="p-12 bg-gray-50 grow">
-          <Outlet />
+        <main className="p-4 bg-gray-100 grow">
+          <div className=" bg-white p-6 border rounded-xl shadow-lg h-full">
+            <Outlet />
+          </div>
         </main>
       </div>
     </>
