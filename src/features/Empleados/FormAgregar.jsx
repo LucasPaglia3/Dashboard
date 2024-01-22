@@ -1,4 +1,4 @@
-import { Select, SelectItem, Input, Button, Divider } from "@nextui-org/react";
+import { Select, SelectItem, Input, Button } from "@nextui-org/react";
 import { useForm, Controller } from "react-hook-form";
 
 const FormAgregar = ({ onSubmit, fullList, emp }) => {

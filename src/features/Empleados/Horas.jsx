@@ -6,6 +6,7 @@ import { Divider } from "@nextui-org/react";
 import { toast } from "react-toastify";
 import FormAgregar from "./FormAgregar";
 import ListaParaHistorial from "./ListaParaHistorial";
+import ListaDeHistorial from "./ListaDeHistorial";
 
 const Horas = () => {
   const [listaEmp, setListaEmp] = useState([]);
@@ -33,11 +34,16 @@ const Horas = () => {
   };
 
   return (
-    <div className="w-full flex gap-8">
-      <FormAgregar onSubmit={onSubmit} fullList={fullList} emp={emp} />
-      <Divider orientation="vertical" className=" h-auto" />
-      <ListaParaHistorial listaEmp={listaEmp} fullList={fullList} />
-    </div>
+    <>
+      <div className="w-full flex gap-8">
+        <FormAgregar onSubmit={onSubmit} fullList={fullList} emp={emp} />
+        <Divider orientation="vertical" className=" h-auto" />
+        <ListaParaHistorial listaEmp={listaEmp} fullList={fullList} />
+      </div>
+      <div className="flex justify-center">
+        <ListaDeHistorial />
+      </div>
+    </>
   );
 };
 
