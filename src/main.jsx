@@ -5,10 +5,11 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./routes/Root.jsx";
 import ErrorPage from "./routes/Error-Page.jsx";
-import Test from "./routes/test.jsx";
+import Empleados from "./routes/Empleados.jsx";
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Test from "./routes/Test.jsx";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "contacts",
+        element: <Empleados />,
+      },
+      {
+        path: "testpdf",
         element: <Test />,
       },
     ],

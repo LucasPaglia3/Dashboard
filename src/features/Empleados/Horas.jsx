@@ -1,19 +1,19 @@
 import { useEmpleados } from "./useEmpleados";
 import { useState } from "react";
-import { Spinner } from "@nextui-org/react";
-import { Divider } from "@nextui-org/react";
+import Spinner from "../../ui/Spinner";
 
 import { toast } from "react-toastify";
 import FormAgregar from "./FormAgregar";
-import ListaParaHistorial from "./ListaParaHistorial";
+import ListaAgregados from "./ListaAgregados";
 import ListaDeHistorial from "./ListaDeHistorial";
+import { Separator } from "@/components/ui/separator";
 
 const Horas = () => {
   const [listaEmp, setListaEmp] = useState([]);
 
   const { empleados, isLoading } = useEmpleados();
 
-  if (isLoading) return <Spinner size="lg" />;
+  if (isLoading) return <Spinner />;
   const emp = empleados.empleados;
 
   const fullList = emp.length === listaEmp.length;
@@ -37,10 +37,10 @@ const Horas = () => {
     <>
       <div className="w-full h-64 flex gap-8">
         <FormAgregar onSubmit={onSubmit} fullList={fullList} emp={emp} />
-        <Divider orientation="vertical" className=" h-auto" />
-        <ListaParaHistorial listaEmp={listaEmp} fullList={fullList} />
+        <Separator orientation="vertical" className=" h-full" />
+        <ListaAgregados listaEmp={listaEmp} fullList={fullList} />
       </div>
-      <div className="flex justify-center">
+      <div className="flex flex-col items-center">
         <ListaDeHistorial />
       </div>
     </>

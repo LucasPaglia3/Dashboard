@@ -3,7 +3,7 @@ import { LayoutDashboard } from "lucide-react";
 import { Users } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import SideBarItem from "./SidebarItem";
-import { Divider } from "@nextui-org/react";
+import { Separator } from "@/components/ui/separator";
 
 const SideBar = () => {
   const location = useLocation();
@@ -14,7 +14,7 @@ const SideBar = () => {
         <div className="pt-5 pb-8 xl:pb-11">
           <Factory className="size-10 xl:size-24 fill-blue-400" />
         </div>
-        <Divider className="w-5/6" />
+        <Separator className="w-5/6" />
         <div className="flex flex-col items-center gap-2 pt-8">
           <SideBarItem icon={<LayoutDashboard />} path={"/"}>
             Dashboard
