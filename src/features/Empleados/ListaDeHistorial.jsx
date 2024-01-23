@@ -9,11 +9,7 @@ const ListaDeHistorial = () => {
   if (isLoading) return <Spinner />;
   const historialArray = historial.historial;
 
-  return (
-    <div className="w-full">
-      <DataTable columns={columns} data={historialArray} />
-    </div>
-  );
+  return <DataTable columns={columns} data={historialArray} />;
 };
 
 export default ListaDeHistorial;

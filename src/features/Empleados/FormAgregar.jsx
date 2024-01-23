@@ -22,19 +22,18 @@ const FormAgregar = ({ onSubmit, fullList, emp }) => {
   const form = useForm();
 
   return (
-    <div className="flex flex-col gap-3 w-1/2">
+    <div className="flex flex-col gap-3 w-auto xl:w-[37rem] items-center xl:items-baseline">
       <h1 className="text-md font-semibold">Agregar Contacto</h1>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex w-auto border-2 rounded-xl h-26 items-center p-2 xl:p-8 justify-between gap-4"
+          className="flex flex-col lg:flex-row items-center justify-center gap-2 rounded-xl border-2 p-5 xl:w-full"
         >
           <FormField
             name="empleado"
             control={form.control}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Seleccione un empleado</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   disabled={fullList}
@@ -56,7 +55,6 @@ const FormAgregar = ({ onSubmit, fullList, emp }) => {
                     ))}
                   </SelectContent>
                 </Select>
-                <FormDescription>Empleado a agregar</FormDescription>
               </FormItem>
             )}
           />
@@ -65,17 +63,13 @@ const FormAgregar = ({ onSubmit, fullList, emp }) => {
             control={form.control}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Horas</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="horas"
+                    placeholder="Horas"
                     disabled={fullList}
                     {...form.register("horas", { required: true })}
                   />
                 </FormControl>
-                <FormDescription>
-                  Introduzca la cantidad de horas de trabajo
-                </FormDescription>
               </FormItem>
             )}
           />

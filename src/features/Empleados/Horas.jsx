@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 import FormAgregar from "./FormAgregar";
 import ListaAgregados from "./ListaAgregados";
 import ListaDeHistorial from "./ListaDeHistorial";
-import { Separator } from "@/components/ui/separator";
 
 const Horas = () => {
   const [listaEmp, setListaEmp] = useState([]);
@@ -34,16 +33,21 @@ const Horas = () => {
   };
 
   return (
-    <>
-      <div className="w-full h-64 flex gap-8">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+      <div className="h-auto xl:h-56 pb-10">
         <FormAgregar onSubmit={onSubmit} fullList={fullList} emp={emp} />
-        <Separator orientation="vertical" className=" h-full" />
-        <ListaAgregados listaEmp={listaEmp} fullList={fullList} />
       </div>
-      <div className="flex flex-col items-center">
+      <div className=" pb-10">
+        <ListaAgregados
+          listaEmp={listaEmp}
+          fullList={fullList}
+          setListaEmp={setListaEmp}
+        />
+      </div>
+      <div className="xl:col-span-2">
         <ListaDeHistorial />
       </div>
-    </>
+    </div>
   );
 };
 

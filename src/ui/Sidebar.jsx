@@ -9,22 +9,20 @@ const SideBar = () => {
   const location = useLocation();
   console.log(location.pathname);
   return (
-    <div className="py-4 bg-slate-100 h-screen">
-      <nav className="h-full flex flex-col w-16 xl:w-60 border-y border-r rounded-r-xl shadow-sm items-center bg-white">
-        <div className="pt-5 pb-8 xl:pb-11">
-          <Factory className="size-10 xl:size-24 fill-blue-400" />
-        </div>
-        <Separator className="w-5/6" />
-        <div className="flex flex-col items-center gap-2 pt-8">
-          <SideBarItem icon={<LayoutDashboard />} path={"/"}>
-            Dashboard
-          </SideBarItem>
-          <SideBarItem icon={<Users />} path={"/contacts"}>
-            Personas
-          </SideBarItem>
-        </div>
-      </nav>
-    </div>
+    <nav className="h-screen sticky top-0 lg:flex flex-col hidden px-2 xl:w-60 border-r items-center">
+      <div className="py-5 xl:pb-6">
+        <Factory className="size-10 xl:size-20 fill-blue-400" />
+      </div>
+      <Separator className="w-5/6" />
+      <div className="flex flex-col items-center gap-2 pt-8 grow">
+        <SideBarItem icon={<LayoutDashboard />} path={"/"}>
+          Dashboard
+        </SideBarItem>
+        <SideBarItem icon={<Users />} path={"/contacts"}>
+          Personas
+        </SideBarItem>
+      </div>
+    </nav>
   );
 };
 

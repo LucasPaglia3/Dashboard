@@ -44,7 +44,7 @@ export function DataTable({ columns, data }) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
-    <div>
+    <div className="py-2">
       {table.getColumn("mes") && (
         <DataTableFacetedFilter
           column={table.getColumn("mes")}
@@ -69,8 +69,8 @@ export function DataTable({ columns, data }) {
           <X className="ml-2 h-4 w-4" />
         </Button>
       )}
-      <div className="rounded-md border">
-        <Table>
+      <div className=" box-content rounded-md border">
+        <Table className="relative">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

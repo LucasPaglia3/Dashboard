@@ -1,9 +1,8 @@
-const PageTitle = ({ title, desc }) => {
+const PageTitle = ({ title }) => {
   return (
-    <div className="flex flex-col gap-6">
-      <h1 className="text-5xl font-bold tracking-tight">{title}</h1>
-      <h4 className="text-xl font-semibold tracking-tight">{desc}</h4>
-    </div>
+    <h1 className="text-5xl font-bold tracking-tight pb-5 text-center lg:text-start">
+      {title}
+    </h1>
   );
 };
 
