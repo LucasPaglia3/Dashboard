@@ -4,6 +4,7 @@ import { Users } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import SideBarItem from "./SidebarItem";
 import { Separator } from "@/components/ui/separator";
+import { Building2 } from "lucide-react";
 
 const SideBar = () => {
   const location = useLocation();
@@ -16,10 +17,13 @@ const SideBar = () => {
       <Separator className="w-5/6" />
       <div className="flex flex-col items-center gap-2 pt-8 grow">
         <SideBarItem icon={<LayoutDashboard />} path={"/"}>
-          Dashboard
+          Inicio
+        </SideBarItem>
+        <SideBarItem icon={<Building2 />} path={"/clientes"}>
+          Clientes
         </SideBarItem>
         <SideBarItem icon={<Users />} path={"/contacts"}>
-          Personas
+          Empleados
         </SideBarItem>
       </div>
     </nav>

@@ -13,7 +13,7 @@ const HistorialPDF = ({ tableData, año, mes, quincena }) => {
     const centerTextX = (text) =>
       (doc.internal.pageSize.getWidth() - doc.getTextWidth(text)) / 2;
 
-    // Encabezado
+    // Encabezado TODO: HACERLO MAS FACHA.
     doc.text(`Horas de trabajo`, centerTextX(title), 20);
     doc.text(
       `${quincena} quincena de ${mes} ${año}`,

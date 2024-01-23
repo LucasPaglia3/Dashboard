@@ -20,10 +20,10 @@ import { Button } from "@/components/ui/button";
 import { DataTableFacetedFilter } from "./Data-Table-Faceted-Filter";
 
 import { X } from "lucide-react";
-import { quincenas, meses } from "./filters";
+import { quincenas, meses } from "../../features/Empleados/filters"; // Solo para empleados. TODO: Mover a Horas.jsx
 import { useState } from "react";
 
-export function DataTable({ columns, data }) {
+export function DataTable({ columns, data, usesFacetedFilter, paddingY }) {
   const [columnFilters, setColumnFilters] = useState([]);
 
   const table = useReactTable({
@@ -45,30 +45,35 @@ export function DataTable({ columns, data }) {
 
   return (
     <div className="py-2">
-      {table.getColumn("mes") && (
-        <DataTableFacetedFilter
-          column={table.getColumn("mes")}
-          title="Mes"
-          options={meses}
-        />
+      {usesFacetedFilter && (
+        <>
+          {table.getColumn("mes") && (
+            <DataTableFacetedFilter
+              column={table.getColumn("mes")}
+              title="Mes"
+              options={meses}
+            />
+          )}
+          {table.getColumn("quincena") && (
+            <DataTableFacetedFilter
+              column={table.getColumn("quincena")}
+              title="Quincena"
+              options={quincenas}
+            />
+          )}
+          {isFiltered && (
+            <Button
+              variant="ghost"
+              onClick={() => table.resetColumnFilters()}
+              className="h-8 px-2 lg:px-3"
+            >
+              Reset
+              <X className="ml-2 h-4 w-4" />
+            </Button>
+          )}
+        </>
       )}
-      {table.getColumn("quincena") && (
-        <DataTableFacetedFilter
-          column={table.getColumn("quincena")}
-          title="Quincena"
-          options={quincenas}
-        />
-      )}
-      {isFiltered && (
-        <Button
-          variant="ghost"
-          onClick={() => table.resetColumnFilters()}
-          className="h-8 px-2 lg:px-3"
-        >
-          Reset
-          <X className="ml-2 h-4 w-4" />
-        </Button>
-      )}
+
       <div className=" box-content rounded-md border">
         <Table className="relative">
           <TableHeader>
@@ -97,7 +102,7 @@ export function DataTable({ columns, data }) {
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} paddingY={paddingY}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

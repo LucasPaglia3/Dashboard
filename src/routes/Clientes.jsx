@@ -1,15 +1,15 @@
 import { Separator } from "@/components/ui/separator";
-import Horas from "../features/Empleados/Horas";
 import PageTitle from "../components/ui/PageTitle";
+import ListaClientes from "@/features/Clientes/ListaClientes";
 
-const Empleados = () => {
+const Clientes = () => {
   return (
     <div className="flex flex-col gap-5 h-full">
-      <PageTitle title={"Contacts"} />
+      <PageTitle title={"Clientes"} />
       <Separator />
-      <Horas />
+      <ListaClientes />
     </div>
   );
 };
 
-export default Empleados;
+export default Clientes;

@@ -1,15 +1,27 @@
-import Spinner from "@/ui/Spinner";
+import Spinner from "@/components/ui/Spinner";
 import { useHistorial } from "./useHistorial";
-import { DataTable } from "./data-table";
-import { columns } from "./Columns";
+import { DataTable } from "../../components/ui/Data-Table";
+import { columns } from "./Empleados-Columns";
 
 const ListaDeHistorial = () => {
   const { historial, isLoading } = useHistorial();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center h-full w-full">
+        <Spinner />
+      </div>
+    );
   const historialArray = historial.historial;
 
-  return <DataTable columns={columns} data={historialArray} />;
+  return (
+    <DataTable
+      columns={columns}
+      data={historialArray}
+      usesFacetedFilter={true}
+      paddingY={2}
+    />
+  );
 };
 
 export default ListaDeHistorial;

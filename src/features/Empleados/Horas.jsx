@@ -1,6 +1,6 @@
 import { useEmpleados } from "./useEmpleados";
 import { useState } from "react";
-import Spinner from "../../ui/Spinner";
+import Spinner from "../../components/ui/Spinner";
 
 import { toast } from "react-toastify";
 import FormAgregar from "./FormAgregar";
@@ -12,7 +12,12 @@ const Horas = () => {
 
   const { empleados, isLoading } = useEmpleados();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center h-full w-full">
+        <Spinner />
+      </div>
+    );
   const emp = empleados.empleados;
 
   const fullList = emp.length === listaEmp.length;
