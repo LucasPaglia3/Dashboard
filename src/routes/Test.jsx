@@ -1,12 +1,10 @@
-import { useEmpleados } from "../hooks/Empleados/useEmpleados";
-import PageTitle from "../ui/PageTitle";
+import HistorialPDF from "../features/Empleados/pdf/HistorialPDF";
 
 const Test = () => {
   return (
-    <PageTitle
-      title={"Contacts"}
-      desc={"Descripción super larga sobre esta página"}
-    />
+    <div>
+      <HistorialPDF />
+    </div>
   );
 };
 
