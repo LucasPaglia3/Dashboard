@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import HistorialPDF from "./pdf/HistorialPDF";
 
 export const columns = [
   {
@@ -29,14 +28,12 @@ export const columns = [
       const historial = row.original;
       return (
         <div className="flex justify-center">
-          {" "}
-          <Button
-            className=" border-slate-300 shadow-sm"
-            variant="outline"
-            onClick={() => console.log(historial.id)}
-          >
-            <Download className="h-5 w-5 mr-2" /> <span>Descargar PDF</span>
-          </Button>
+          <HistorialPDF
+            tableData={historial.empleadosHoras}
+            año={historial.año}
+            mes={historial.mes}
+            quincena={historial.quincena}
+          />
         </div>
       );
     },

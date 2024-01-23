@@ -27,7 +27,7 @@ const ListAgregados = ({ listaEmp, fullList, setListaEmp }) => {
       </h1>
       <div className="grid grid-cols-6">
         <div className="flex flex-col col-span-4">
-          <h1 className="text-lg font-semibold ">Empleado</h1>
+          <h1 className="text-lg font-semibold">Empleado</h1>
           {listaEmp.map((empleado) => (
             <span key={empleado.horas}>{empleado.empleado}</span>
           ))}
@@ -49,8 +49,8 @@ const ListAgregados = ({ listaEmp, fullList, setListaEmp }) => {
           ))}
         </div>
       </div>
-      <Button color="primary" onClick={finalizarListado} disabled={!fullList}>
-        Guardar historial.
+      <Button variant="blue" onClick={finalizarListado} disabled={!fullList}>
+        Guardar historial
       </Button>
     </div>
   );

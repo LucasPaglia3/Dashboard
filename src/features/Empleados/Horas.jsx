@@ -33,17 +33,15 @@ const Horas = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-      <div className="h-auto xl:h-56 pb-10">
-        <FormAgregar onSubmit={onSubmit} fullList={fullList} emp={emp} />
-      </div>
-      <div className=" pb-10">
-        <ListaAgregados
-          listaEmp={listaEmp}
-          fullList={fullList}
-          setListaEmp={setListaEmp}
-        />
-      </div>
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-4 gap-y-6">
+      <FormAgregar onSubmit={onSubmit} fullList={fullList} emp={emp} />
+
+      <ListaAgregados
+        listaEmp={listaEmp}
+        fullList={fullList}
+        setListaEmp={setListaEmp}
+      />
+
       <div className="xl:col-span-2">
         <ListaDeHistorial />
       </div>

@@ -8,6 +8,7 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -22,18 +23,20 @@ const FormAgregar = ({ onSubmit, fullList, emp }) => {
   const form = useForm();
 
   return (
-    <div className="flex flex-col gap-3 w-auto xl:w-[37rem] items-center xl:items-baseline">
-      <h1 className="text-md font-semibold">Agregar Contacto</h1>
+    <div className="flex flex-col gap-3 w-auto items-center ">
+      <h1 className="text-3xl font-bold">Agregar Contacto</h1>
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col lg:flex-row items-center justify-center gap-2 rounded-xl border-2 p-5 xl:w-full"
+          className="flex flex-col items-center justify-center gap-2 xl:w-full"
         >
           <FormField
             name="empleado"
             control={form.control}
             render={({ field }) => (
               <FormItem>
+                <Label htmlFor="empleado">Nombre de Empleado</Label>
                 <Select
                   onValueChange={field.onChange}
                   disabled={fullList}
@@ -63,6 +66,7 @@ const FormAgregar = ({ onSubmit, fullList, emp }) => {
             control={form.control}
             render={({ field }) => (
               <FormItem>
+                <Label htmlFor="hours-worked">Hours Worked</Label>
                 <FormControl>
                   <Input
                     placeholder="Horas"
@@ -73,7 +77,12 @@ const FormAgregar = ({ onSubmit, fullList, emp }) => {
               </FormItem>
             )}
           />
-          <Button type="submit" variant="confirm" disabled={fullList}>
+          <Button
+            type="submit"
+            variant="confirm"
+            disabled={fullList}
+            className="w-56"
+          >
             Agregar
           </Button>
         </form>
