@@ -7,5 +7,19 @@ export const getAllClientes = async () => {
     throw new Error("Clientes could not be loaded. " + error.message);
   }
 
-  return { clientes, error };
+  return { clientes };
+};
+
+export const getCliente = async (id) => {
+  const { data: cliente, error } = await supabase
+    .from("clientes")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    throw new Error("Clientes could not be loaded. " + error.message);
+  }
+
+  return cliente;
 };

@@ -10,7 +10,7 @@ const SideBar = () => {
   const location = useLocation();
   console.log(location.pathname);
   return (
-    <nav className="h-screen sticky top-0 lg:flex flex-col hidden px-2 xl:w-60 border-r items-center">
+    <nav className="h-screen sticky top-0 lg:flex bg-gray-100/60 flex-col hidden px-2 xl:w-60 border-r items-center">
       <div className="py-5 xl:pb-6">
         <Factory className="size-10 xl:size-20 fill-blue-400" />
       </div>

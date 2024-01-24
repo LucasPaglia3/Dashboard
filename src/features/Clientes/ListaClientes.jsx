@@ -9,11 +9,17 @@ const ListaClientes = () => {
   if (isLoading) return <Spinner />;
 
   const clientesArray = clientes.clientes;
+  console.log(clientesArray);
 
   return (
     <div className="flex flex-col ">
       <h1 className="text-3xl font-semibold">Lista de Clientes</h1>
-      <DataTable data={clientesArray} columns={columns} paddingY={4} />
+      <DataTable
+        data={clientesArray}
+        columns={columns}
+        paddingY={2}
+        pageSize={10}
+      />
     </div>
   );
 };

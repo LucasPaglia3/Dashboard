@@ -10,6 +10,7 @@ import Clientes from "./routes/Clientes";
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ClienteId from "./routes/ClienteId";
 
 const queryClient = new QueryClient();
 
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: "clientes/:clienteId",
-        element: <div>Hola</div>,
+        element: <ClienteId />,
       },
     ],
   },

@@ -20,6 +20,7 @@ const ListaDeHistorial = () => {
       data={historialArray}
       usesFacetedFilter={true}
       paddingY={2}
+      pageSize={4}
     />
   );
 };

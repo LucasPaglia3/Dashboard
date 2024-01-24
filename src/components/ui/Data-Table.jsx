@@ -23,7 +23,13 @@ import { X } from "lucide-react";
 import { quincenas, meses } from "../../features/Empleados/filters"; // Solo para empleados. TODO: Mover a Horas.jsx
 import { useState } from "react";
 
-export function DataTable({ columns, data, usesFacetedFilter, paddingY }) {
+export function DataTable({
+  columns,
+  data,
+  usesFacetedFilter,
+  paddingY,
+  pageSize,
+}) {
   const [columnFilters, setColumnFilters] = useState([]);
 
   const table = useReactTable({
@@ -38,7 +44,7 @@ export function DataTable({ columns, data, usesFacetedFilter, paddingY }) {
     getFilteredRowModel: getFilteredRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
-    initialState: { pagination: { pageSize: 4 } },
+    initialState: { pagination: { pageSize: pageSize } },
   });
 
   const isFiltered = table.getState().columnFilters.length > 0;
@@ -76,12 +82,12 @@ export function DataTable({ columns, data, usesFacetedFilter, paddingY }) {
 
       <div className=" box-content rounded-md border">
         <Table className="relative">
-          <TableHeader>
+          <TableHeader className="bg-gray-200/40">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className=" text-gray-700">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
