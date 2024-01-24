@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { jsPDF } from "jspdf";
-import { autoTable } from "jspdf-autotable";
 
 const HistorialPDF = ({ tableData, año, mes, quincena }) => {
   const generarPDF = () => {
     const doc = new jsPDF();
+    const logo = new Image();
+    logo.src = "logo2-done-1.png";
 
     // Estilos
     const title = "Horas de trabajo.";
@@ -14,18 +15,19 @@ const HistorialPDF = ({ tableData, año, mes, quincena }) => {
       (doc.internal.pageSize.getWidth() - doc.getTextWidth(text)) / 2;
 
     // Encabezado TODO: HACERLO MAS FACHA.
-    doc.text(`Horas de trabajo`, centerTextX(title), 20);
+    doc.addImage(logo, "PNG", 65, 5, 80, 50);
+    doc.text(`Horas de trabajo`, centerTextX(title), 63);
     doc.text(
       `${quincena} quincena de ${mes} ${año}`,
       centerTextX(subTitle),
-      30
+      69
     );
 
     // Crear una tabla para los detalles de la factura.
     const columns = ["Empleado", "Horas"];
 
     doc.autoTable({
-      startY: 40,
+      startY: 75,
       head: [columns],
       styles: {
         cellPadding: 3,

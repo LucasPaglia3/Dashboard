@@ -14,10 +14,11 @@ export const getAllEmpleados = async () => {
 };
 
 // HISTORIAL EMPLEADOS
-export const getHistorial = async () => {
+export const getAllHistorial = async () => {
   const { data: historial, error } = await supabase
     .from("horasEmpleados")
-    .select("*");
+    .select("*")
+    .order("created_at", { ascending: false }); // Ordena para que salgan primeros en la lista los que recien fueron creados.
 
   if (error) {
     throw new Error(
