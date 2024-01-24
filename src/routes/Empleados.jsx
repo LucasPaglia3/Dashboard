@@ -5,7 +5,7 @@ import PageTitle from "../components/ui/PageTitle";
 const Empleados = () => {
   return (
     <div className="flex flex-col gap-5 h-full">
-      <PageTitle title={"Contacts"} />
+      <PageTitle title={"Empleados"} />
       <Separator />
       <Horas />
     </div>

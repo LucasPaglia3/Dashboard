@@ -1,4 +1,5 @@
 import { useEmpleados } from "./useEmpleados";
+import { useHistorial } from "./useHistorial";
 import { useState } from "react";
 import Spinner from "../../components/ui/Spinner";
 
@@ -11,13 +12,9 @@ const Horas = () => {
   const [listaEmp, setListaEmp] = useState([]);
 
   const { empleados, isLoading } = useEmpleados();
+  const { historial, isLoading: isLoading2 } = useHistorial();
 
-  if (isLoading)
-    return (
-      <div className="flex items-center justify-center h-full w-full">
-        <Spinner />
-      </div>
-    );
+  if (isLoading || isLoading2) return <Spinner />;
   const emp = empleados.empleados;
 
   const fullList = emp.length === listaEmp.length;
@@ -38,7 +35,7 @@ const Horas = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-4 gap-y-6">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-4 gap-y-2">
       <FormAgregar onSubmit={onSubmit} fullList={fullList} emp={emp} />
 
       <ListaAgregados
@@ -48,7 +45,7 @@ const Horas = () => {
       />
 
       <div className="xl:col-span-2">
-        <ListaDeHistorial />
+        <ListaDeHistorial historial={historial} />
       </div>
     </div>
   );

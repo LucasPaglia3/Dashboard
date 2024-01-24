@@ -12,7 +12,7 @@ const CardCliente = ({ cliente }) => {
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
         <div className="grid grid-cols-1 lg:grid-cols-4 p-3 place-items-center xl:place-items-baseline gap-8 xl:gap-0">
-          <div className="grid grid-rows-2 gap-5 cols-span-4">
+          <div className="grid grid-rows-2 gap-3 cols-span-4">
             <h1 className="text-4xl font-semibold">{cliente.nombre}</h1>
             <h3 className="text-center xl:text-start">www.hola.com.ar</h3>
           </div>
