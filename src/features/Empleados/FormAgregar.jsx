@@ -40,7 +40,7 @@ const FormAgregar = ({ onSubmit, fullList, emp }) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <Label htmlFor="empleado">Nombre de Empleado</Label>
+                    <FormLabel htmlFor="empleado">Nombre de Empleado</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       disabled={fullList}
@@ -70,12 +70,19 @@ const FormAgregar = ({ onSubmit, fullList, emp }) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <Label htmlFor="hours-worked">Hours Worked</Label>
+                    <FormLabel htmlFor="hours-worked">
+                      Horas trabajadas
+                    </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Horas"
                         disabled={fullList}
-                        {...form.register("horas", { required: true })}
+                        {...form.register("horas", {
+                          required: {
+                            value: true,
+                            message: "Introducí las horas de trabajo.",
+                          },
+                        })}
                       />
                     </FormControl>
                   </FormItem>

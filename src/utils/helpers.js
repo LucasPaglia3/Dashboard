@@ -19,3 +19,9 @@ export const getYear = () => {
   const year = today.getFullYear();
   return year;
 };
+
+export const formatDate = (timestampString) => {
+  const timestamp = new Date(timestampString);
+  const options = { day: "2-digit", month: "numeric", year: "numeric" };
+  return timestamp.toLocaleDateString("es-AR", options);
+};

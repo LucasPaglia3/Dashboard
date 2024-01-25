@@ -50,9 +50,9 @@ export function DataTable({
   const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
-    <div className="py-2">
+    <div className="pt-2">
       {usesFacetedFilter && (
-        <>
+        <div className=" items-center">
           {table.getColumn("mes") && (
             <DataTableFacetedFilter
               column={table.getColumn("mes")}
@@ -77,7 +77,7 @@ export function DataTable({
               <X className="ml-2 h-4 w-4" />
             </Button>
           )}
-        </>
+        </div>
       )}
 
       <div className=" box-content rounded-md border">

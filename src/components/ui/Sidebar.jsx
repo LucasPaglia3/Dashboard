@@ -22,7 +22,7 @@ const SideBar = () => {
         <SideBarItem icon={<Building2 />} path={"/clientes"}>
           Clientes
         </SideBarItem>
-        <SideBarItem icon={<Users />} path={"/contacts"}>
+        <SideBarItem icon={<Users />} path={"/empleados/horas"}>
           Empleados
         </SideBarItem>
       </div>

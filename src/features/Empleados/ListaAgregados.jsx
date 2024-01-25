@@ -3,6 +3,7 @@ import { getMonthName, getQuincena, getYear } from "../../utils/helpers";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Spinner from "@/components/ui/Spinner";
 
 const ListAgregados = ({ listaEmp, fullList, setListaEmp }) => {
   const { createHistorial, isPending } = useCreateHistorial();
@@ -70,7 +71,11 @@ const ListAgregados = ({ listaEmp, fullList, setListaEmp }) => {
             onClick={finalizarListado}
             disabled={!fullList}
           >
-            Guardar historial
+            {isPending ? (
+              <Spinner isForButton={true} />
+            ) : (
+              <span>Guardar historial</span>
+            )}
           </Button>
         </div>
       </CardContent>

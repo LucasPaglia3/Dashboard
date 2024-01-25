@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { jsPDF } from "jspdf";
+import { autoTable } from "jspdf-autotable";
 
 const HistorialPDF = ({ tableData, año, mes, quincena }) => {
   const generarPDF = () => {
@@ -15,12 +16,12 @@ const HistorialPDF = ({ tableData, año, mes, quincena }) => {
       (doc.internal.pageSize.getWidth() - doc.getTextWidth(text)) / 2;
 
     // Encabezado TODO: HACERLO MAS FACHA.
-    doc.addImage(logo, "PNG", 65, 5, 80, 50);
+    doc.addImage(logo, "PNG", 66, 5, 80, 50);
     doc.text(`Horas de trabajo`, centerTextX(title), 63);
     doc.text(
       `${quincena} quincena de ${mes} ${año}`,
       centerTextX(subTitle),
-      69
+      70
     );
 
     // Crear una tabla para los detalles de la factura.

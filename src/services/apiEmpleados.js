@@ -10,7 +10,7 @@ export const getAllEmpleados = async () => {
     throw new Error("Empleados could not be loaded. " + error.message);
   }
 
-  return { empleados, error };
+  return { empleados };
 };
 
 // HISTORIAL EMPLEADOS
@@ -26,7 +26,7 @@ export const getAllHistorial = async () => {
     );
   }
 
-  return { historial, error };
+  return { historial };
 };
 
 export const createHistorial = async (newHistoria) => {
