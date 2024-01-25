@@ -7,7 +7,8 @@ const HistorialPDF = ({ tableData, año, mes, quincena }) => {
   const generarPDF = () => {
     const doc = new jsPDF();
     const logo = new Image();
-    logo.src = "logo2-done-1.png";
+    logo.src = "/logo2-done-1.png";
+    console.log(logo);
 
     // Estilos
     const title = "Horas de trabajo.";
@@ -16,40 +17,42 @@ const HistorialPDF = ({ tableData, año, mes, quincena }) => {
       (doc.internal.pageSize.getWidth() - doc.getTextWidth(text)) / 2;
 
     // Encabezado TODO: HACERLO MAS FACHA.
-    doc.addImage(logo, "PNG", 66, 5, 80, 50);
-    doc.text(`Horas de trabajo`, centerTextX(title), 63);
+    doc.addImage(logo, "PNG", 72.5, 5, 65, 40);
+    doc.text(`Horas de trabajo`, centerTextX(title), 53);
     doc.text(
       `${quincena} quincena de ${mes} ${año}`,
       centerTextX(subTitle),
-      70
+      60
     );
 
     // Crear una tabla para los detalles de la factura.
     const columns = ["Empleado", "Horas"];
 
-    doc.autoTable({
-      startY: 75,
-      head: [columns],
-      styles: {
-        cellPadding: 3,
-        fontSize: 14,
-        lineWidth: 0.35,
-        lineColor: 150,
-      },
-      body: tableData.map(({ empleado, horas }) => {
-        return [empleado, horas];
-      }),
-      bodyStyles: {
-        margin: 40,
-        fontSize: 13,
-        lineWidth: 0.35,
-        lineColor: 150,
-        textColor: [0, 0, 0],
-      },
-    });
+    logo.onload = () => {
+      doc.autoTable({
+        startY: 70,
+        head: [columns],
+        styles: {
+          cellPadding: 3,
+          fontSize: 14,
+          lineWidth: 0.35,
+          lineColor: 150,
+        },
+        body: tableData.map(({ empleado, horas }) => {
+          return [empleado, horas];
+        }),
+        bodyStyles: {
+          margin: 40,
+          fontSize: 13,
+          lineWidth: 0.35,
+          lineColor: 150,
+          textColor: [0, 0, 0],
+        },
+      });
 
-    // Guardar pdf con nombre especifico.
-    doc.save(`Horas-${mes}-${quincena}Quincena-${año}.pdf`);
+      // Guardar pdf con nombre especifico.
+      doc.save(`Horas-${mes}-${quincena}Quincena-${año}.pdf`);
+    };
   };
 
   return (

@@ -23,3 +23,16 @@ export const getCliente = async (id) => {
 
   return cliente;
 };
+
+export const createCliente = async (newCliente) => {
+  const { data: cliente, error } = await supabase
+    .from("clientes")
+    .insert([{ ...newCliente }])
+    .select();
+
+  if (error) {
+    throw new Error("Cliente could not be created. " + error.message);
+  }
+
+  return cliente;
+};
