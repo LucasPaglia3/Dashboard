@@ -9,7 +9,7 @@ export const useCrearCliente = () => {
     mutationKey: ["clientes"],
     onSuccess: () => {
       toast.success("Cliente creado con éxito!");
-      queryClient.invalidateQueries();
+      queryClient.invalidateQueries({ queryKey: ["clientes"] });
     },
   });
 

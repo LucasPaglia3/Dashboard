@@ -13,7 +13,6 @@ export const columns = [
     header: "Fecha de Entrada",
     cell: ({ row }) => {
       const timestampz = row.getValue("fechaEntrada");
-      console.log(timestampz);
       const formatted = formatDate(timestampz);
 
       return <div>{formatted}</div>;

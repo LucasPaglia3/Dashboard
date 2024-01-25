@@ -24,29 +24,25 @@ import { useEditCliente } from "./useEditCliente";
 import Spinner from "@/components/ui/Spinner";
 import { useState } from "react";
 
-const EditCliente = ({ clienteAEditar = {} }) => {
+const EditCliente = ({ cliente = {} }) => {
   const [open, setOpen] = useState(false);
-
-  const { id, ...editValues } = clienteAEditar;
   const { editCliente, isLoading } = useEditCliente();
 
-  const form = useForm({ defaultValues: editValues });
+  const form = useForm({
+    defaultValues: cliente,
+  });
 
   const onSubmit = (data) => {
-    console.log(data);
-    editCliente(
-      { ...data, id },
-      {
-        onSuccess: () => {
-          setOpen(!open);
-          form.reset();
-          form.clearErrors();
-        },
-        onError: (error) => {
-          console.log(error.message);
-        },
-      }
-    );
+    editCliente(data, {
+      onSuccess: () => {
+        setOpen(!open);
+        form.reset();
+        form.clearErrors();
+      },
+      onError: (error) => {
+        console.log(error.message);
+      },
+    });
   };
 
   const onCancel = () => {
