@@ -2,12 +2,18 @@ import { useCreateHistorial } from "./useCreateHistorial";
 import { getMonthName, getQuincena, getYear } from "../../utils/helpers";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Spinner from "@/components/ui/Spinner";
 
 const ListAgregados = ({ listaEmp, fullList, setListaEmp }) => {
   const { createHistorial, isPending } = useCreateHistorial();
 
   const handleDeleteFromList = (id) => {
     setListaEmp((lista) => lista.filter((emp) => emp.empleado !== id));
+  };
+
+  const handleResetList = () => {
+    setListaEmp([]);
   };
 
   // Guarda listado en bd.
@@ -21,38 +27,59 @@ const ListAgregados = ({ listaEmp, fullList, setListaEmp }) => {
   };
 
   return (
-    <div className="flex flex-col gap-3 w-auto ">
-      <h1 className="text-md font-semibold text-center lg:text-start">
-        Contactos Agregados
-      </h1>
-      <div className="grid grid-cols-6">
-        <div className="flex flex-col col-span-4">
-          <h1 className="text-lg font-semibold ">Empleado</h1>
-          {listaEmp.map((empleado) => (
-            <span key={empleado.horas}>{empleado.empleado}</span>
-          ))}
+    <Card className="shadow-md">
+      <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+        <CardTitle className="text-md font-lg">Empleados Agregados:</CardTitle>
+      </CardHeader>
+      <CardContent className="relative">
+        <div className="grid grid-cols-6 pb-2">
+          <div className="flex flex-col col-span-4">
+            <h1 className="text-lg font-semibold">Empleado</h1>
+            {listaEmp.map((empleado) => (
+              <span key={empleado.horas}>{empleado.empleado}</span>
+            ))}
+          </div>
+          <div className="flex flex-col text-center">
+            <h1 className="text-lg font-semibold">Horas</h1>
+            {listaEmp.map((empleado) => (
+              <span key={empleado.empleado}>{empleado.horas}</span>
+            ))}
+          </div>
+          <div className="flex flex-col text-center">
+            <h1 className="text-lg font-semibold">Eliminar</h1>
+            {listaEmp.map((empleado) => (
+              <X
+                key={empleado.empleado}
+                onClick={() => handleDeleteFromList(empleado.empleado)}
+                className=" text-red-700 self-center cursor-pointer"
+              />
+            ))}
+          </div>
         </div>
-        <div className="flex flex-col text-center">
-          <h1 className="text-lg font-semibold">Horas</h1>
-          {listaEmp.map((empleado) => (
-            <span key={empleado.empleado}>{empleado.horas}</span>
-          ))}
+        <div className="pt-1 self-end flex gap-2 place-content-end">
+          <Button
+            className=""
+            variant="destructive"
+            onClick={handleResetList}
+            disabled={listaEmp.length <= 1}
+          >
+            Eliminar Todo
+          </Button>
+          <Button
+            className=""
+            variant="blue"
+            onClick={finalizarListado}
+            disabled={!fullList}
+          >
+            {isPending ? (
+              <Spinner isForButton={true} />
+            ) : (
+              <span>Guardar historial</span>
+            )}
+          </Button>
         </div>
-        <div className="flex flex-col text-center">
-          <h1 className="text-lg font-semibold">Eliminar</h1>
-          {listaEmp.map((empleado) => (
-            <X
-              key={empleado.empleado}
-              onClick={() => handleDeleteFromList(empleado.empleado)}
-              className=" text-red-700 self-center cursor-pointer"
-            />
-          ))}
-        </div>
-      </div>
-      <Button color="primary" onClick={finalizarListado} disabled={!fullList}>
-        Guardar historial.
-      </Button>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 

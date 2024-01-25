@@ -10,14 +10,15 @@ export const getAllEmpleados = async () => {
     throw new Error("Empleados could not be loaded. " + error.message);
   }
 
-  return { empleados, error };
+  return { empleados };
 };
 
 // HISTORIAL EMPLEADOS
-export const getHistorial = async () => {
+export const getAllHistorial = async () => {
   const { data: historial, error } = await supabase
     .from("horasEmpleados")
-    .select("*");
+    .select("*")
+    .order("created_at", { ascending: false }); // Ordena para que salgan primeros en la lista los que recien fueron creados.
 
   if (error) {
     throw new Error(
@@ -25,7 +26,7 @@ export const getHistorial = async () => {
     );
   }
 
-  return { historial, error };
+  return { historial };
 };
 
 export const createHistorial = async (newHistoria) => {

@@ -1,15 +1,15 @@
 import { Separator } from "@/components/ui/separator";
 import Horas from "../features/Empleados/Horas";
-import PageTitle from "../ui/PageTitle";
+import PageTitle from "../components/ui/PageTitle";
 
-const Empleados = () => {
+const HorasPage = () => {
   return (
     <div className="flex flex-col gap-5 h-full">
-      <PageTitle title={"Contacts"} />
+      <PageTitle title={"Empleados/Horas"} />
       <Separator />
       <Horas />
     </div>
   );
 };
 
-export default Empleados;
+export default HorasPage;

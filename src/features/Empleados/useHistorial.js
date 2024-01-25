@@ -1,10 +1,10 @@
-import { getHistorial } from "../../services/apiEmpleados";
+import { getAllHistorial } from "../../services/apiEmpleados";
 import { useQuery } from "@tanstack/react-query";
 
 export const useHistorial = () => {
   const { data: historial, isPending: isLoading } = useQuery({
     queryKey: ["horasEmpleados"],
-    queryFn: getHistorial,
+    queryFn: getAllHistorial,
   });
 
   return { historial, isLoading };

@@ -1,15 +1,30 @@
-import Spinner from "@/ui/Spinner";
-import { useHistorial } from "./useHistorial";
-import { DataTable } from "./data-table";
-import { columns } from "./Columns";
+import Spinner from "@/components/ui/Spinner";
 
-const ListaDeHistorial = () => {
-  const { historial, isLoading } = useHistorial();
+import { DataTable } from "../../components/ui/Data-Table";
+import { columns } from "./Empleados-Columns";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-  if (isLoading) return <Spinner />;
+const ListaDeHistorial = ({ historial }) => {
   const historialArray = historial.historial;
 
-  return <DataTable columns={columns} data={historialArray} />;
+  return (
+    <Card className="shadow-md">
+      <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+        <CardTitle className="text-md font-lg">
+          Historial de Horarios:
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <DataTable
+          columns={columns}
+          data={historialArray}
+          usesFacetedFilter={true}
+          paddingY={2}
+          pageSize={4}
+        />
+      </CardContent>
+    </Card>
+  );
 };
 
 export default ListaDeHistorial;
