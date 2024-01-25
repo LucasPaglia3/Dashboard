@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Pencil } from "lucide-react";
 
 import {
   Form,
@@ -19,25 +19,34 @@ import {
 
 import { Input } from "@/components/ui/input";
 
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useCrearCliente } from "./useCrearCliente";
+import { useEditCliente } from "./useEditCliente";
 import Spinner from "@/components/ui/Spinner";
+import { useState } from "react";
 
-const CreateCliente = () => {
+const EditCliente = ({ clienteAEditar = {} }) => {
   const [open, setOpen] = useState(false);
-  const form = useForm();
 
-  const { createCliente, isLoading } = useCrearCliente();
+  const { id, ...editValues } = clienteAEditar;
+  const { editCliente, isLoading } = useEditCliente();
+
+  const form = useForm({ defaultValues: editValues });
 
   const onSubmit = (data) => {
-    createCliente(data, {
-      onSuccess: () => {
-        setOpen(!open);
-        form.reset();
-        form.clearErrors();
-      },
-    });
+    console.log(data);
+    editCliente(
+      { ...data, id },
+      {
+        onSuccess: () => {
+          setOpen(!open);
+          form.reset();
+          form.clearErrors();
+        },
+        onError: (error) => {
+          console.log(error.message);
+        },
+      }
+    );
   };
 
   const onCancel = () => {
@@ -49,9 +58,9 @@ const CreateCliente = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <Button variant="blue" className="flex items-center">
-          <Plus className="mr-1 h-5 w-5" />
-          <span>Agregar nuevo cliente</span>
+        <Button variant="blue" className="flex items-center gap-2">
+          <Pencil size={16} />
+          <span>Editar</span>
         </Button>
       </DialogTrigger>
       <DialogContent>
@@ -204,4 +213,4 @@ const CreateCliente = () => {
   );
 };
 
-export default CreateCliente;
+export default EditCliente;

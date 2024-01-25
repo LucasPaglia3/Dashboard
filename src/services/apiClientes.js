@@ -36,3 +36,18 @@ export const createCliente = async (newCliente) => {
 
   return cliente;
 };
+
+export const editCliente = async (editedCliente, id) => {
+  const { data: cliente, error } = await supabase
+    .from("clientes")
+    .update([{ ...editedCliente }])
+    .eq("id", id)
+    .select()
+    .single();
+
+  if (error) {
+    throw new Error("Cliente could not be edited. " + error.message);
+  }
+
+  return cliente;
+};
