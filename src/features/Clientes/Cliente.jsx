@@ -7,7 +7,7 @@ const Cliente = ({ cliente }) => {
       <div className="row-span-1">
         <CardCliente cliente={cliente} />
       </div>
-      <div className="grid row-span-3">
+      <div className="row-span-3">
         <CardTrabajos />
       </div>
     </div>

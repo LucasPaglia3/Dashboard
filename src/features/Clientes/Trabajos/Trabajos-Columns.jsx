@@ -1,3 +1,5 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { formatDate } from "@/utils/helpers";
 
 export const columns = [
@@ -13,7 +15,6 @@ export const columns = [
     header: "Fecha de Entrada",
     cell: ({ row }) => {
       const timestampz = row.getValue("fechaEntrada");
-      console.log(timestampz);
       const formatted = formatDate(timestampz);
 
       return <div>{formatted}</div>;
@@ -25,21 +26,27 @@ export const columns = [
       switch (row.getValue("estado")) {
         case "espera":
           return (
-            <div className=" text-red-700">
+            <Badge variant={"espera"}>
               {row.getValue("estado").toUpperCase()}
-            </div>
+            </Badge>
           );
         case "bobinando":
           return (
-            <div className=" text-yellow-500">
+            <Badge variant={"bobinando"}>
               {row.getValue("estado").toUpperCase()}
-            </div>
+            </Badge>
           );
-        default:
+        case "terminado":
           return (
-            <div className=" text-green-500">
+            <Badge variant={"terminado"}>
               {row.getValue("estado").toUpperCase()}
-            </div>
+            </Badge>
+          );
+        case "entregado":
+          return (
+            <Badge variant={"entregado"}>
+              {row.getValue("estado").toUpperCase()}
+            </Badge>
           );
       }
 
@@ -54,20 +61,14 @@ export const columns = [
     },
     header: "Fecha de Salida",
   },
-  /*  {
+  {
     id: "actions",
     cell: ({ row }) => {
-      const historial = row.original;
       return (
         <div className="flex justify-center">
-          <HistorialPDF
-            tableData={historial.empleadosHoras}
-            año={historial.año}
-            mes={historial.mes}
-            quincena={historial.quincena}
-          />
+          <Button>Hola</Button>
         </div>
       );
     },
-  }, */
+  },
 ];

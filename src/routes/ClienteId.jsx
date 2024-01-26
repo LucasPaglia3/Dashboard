@@ -2,7 +2,7 @@ import PageTitle from "@/components/ui/PageTitle";
 import Spinner from "@/components/ui/Spinner";
 import { Separator } from "@/components/ui/separator";
 import Cliente from "@/features/Clientes/Cliente";
-import { useClienteId } from "@/features/Clientes/useClienteId";
+import { useClienteId } from "@/features/Clientes/useCliente";
 
 const ClienteId = () => {
   const { cliente, isLoading } = useClienteId();

@@ -9,21 +9,14 @@ const CardTrabajos = () => {
   if (isLoading) return <Spinner />;
 
   return (
-    <Card className="shadow-md">
+    <Card className="flex flex-col shadow-md ">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-md font-medium">
           Trabajos para cliente:
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="h-full">
-          <DataTable
-            columns={columns}
-            data={trabajos}
-            pageSize={5}
-            paddingY={5}
-          ></DataTable>
-        </div>
+      <CardContent className="flex">
+        <DataTable columns={columns} data={trabajos} pageSize={5}></DataTable>
       </CardContent>
     </Card>
   );

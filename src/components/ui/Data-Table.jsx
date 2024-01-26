@@ -19,15 +19,17 @@ import {
 import { Button } from "@/components/ui/button";
 import { DataTableFacetedFilter } from "./Data-Table-Faceted-Filter";
 
+import { meses } from "@/features/Empleados/Filters";
+
 import { X } from "lucide-react";
-import { quincenas, meses } from "../../features/Empleados/filters"; // Solo para empleados. TODO: Mover a Horas.jsx
 import { useState } from "react";
+import { ScrollArea, ScrollBar } from "./scroll-area";
 
 export function DataTable({
   columns,
   data,
   usesFacetedFilter,
-  paddingY,
+  filterTitle,
   pageSize,
 }) {
   const [columnFilters, setColumnFilters] = useState([]);
@@ -48,30 +50,38 @@ export function DataTable({
   });
 
   const isFiltered = table.getState().columnFilters.length > 0;
+  let filterOptions;
+
+  switch (usesFacetedFilter) {
+    case "mes":
+      filterOptions = meses;
+      break;
+    case "nombre":
+      filterOptions = table.getRowModel().rows.map((row) => {
+        // Iteramos por todos los valores que hay dentro de las filas de la tabla y creamos objetos con el valor de cada una.
+        return {
+          value: row.original.nombre,
+          label: row.original.nombre,
+        };
+      });
+  }
 
   return (
-    <div className="pt-2">
+    <div className="w-full pt-2">
       {usesFacetedFilter && (
-        <div className=" items-center">
-          {table.getColumn("mes") && (
+        <div className="">
+          {table.getColumn(usesFacetedFilter) && (
             <DataTableFacetedFilter
-              column={table.getColumn("mes")}
-              title="Mes"
-              options={meses}
-            />
-          )}
-          {table.getColumn("quincena") && (
-            <DataTableFacetedFilter
-              column={table.getColumn("quincena")}
-              title="Quincena"
-              options={quincenas}
+              column={table.getColumn(usesFacetedFilter)}
+              title={filterTitle}
+              options={filterOptions}
             />
           )}
           {isFiltered && (
             <Button
               variant="ghost"
               onClick={() => table.resetColumnFilters()}
-              className="h-8 px-2 lg:px-3"
+              className="self-center h-8 px-2 lg:px-3"
             >
               Reset
               <X className="ml-2 h-4 w-4" />
@@ -79,58 +89,61 @@ export function DataTable({
           )}
         </div>
       )}
-
-      <div className=" box-content rounded-md border">
-        <Table className="relative">
-          <TableHeader className="bg-gray-200/40">
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id} className=" text-gray-700">
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} paddingY={paddingY}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
+      <div className="rounded-md border">
+        <ScrollArea type="auto">
+          <Table className="relative">
+            <TableHeader className="bg-gray-200/40">
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => {
+                    return (
+                      <TableHead key={header.id} className=" text-gray-700">
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                      </TableHead>
+                    );
+                  })}
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
-                >
-                  No results.
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              ))}
+            </TableHeader>
+
+            <TableBody>
+              {table.getRowModel().rows?.length ? (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={columns.length}
+                    className="h-24 text-center"
+                  >
+                    No results.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
+      <div className="flex items-center justify-end space-x-2 pb-4 pt-3">
         <Button
           variant="outline"
           size="sm"

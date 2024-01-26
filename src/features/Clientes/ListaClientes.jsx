@@ -11,18 +11,21 @@ const ListaClientes = () => {
   const clientesArray = clientes.clientes;
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col">
       <div className="flex justify-between">
         <h1 className="text-3xl font-semibold">Lista de Clientes</h1>
         <CreateCliente />
       </div>
-
-      <DataTable
-        data={clientesArray}
-        columns={columns}
-        paddingY={2}
-        pageSize={10}
-      />
+      <div className="w-auto">
+        <DataTable
+          data={clientesArray}
+          columns={columns}
+          usesFacetedFilter="nombre"
+          filterTitle="Nombre"
+          paddingY={2}
+          pageSize={10}
+        />
+      </div>
     </div>
   );
 };
