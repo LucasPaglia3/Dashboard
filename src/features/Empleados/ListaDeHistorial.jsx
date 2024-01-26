@@ -18,7 +18,8 @@ const ListaDeHistorial = ({ historial }) => {
         <DataTable
           columns={columns}
           data={historialArray}
-          usesFacetedFilter={true}
+          usesFacetedFilter="mes"
+          filterTitle="Mes"
           paddingY={2}
           pageSize={4}
         />

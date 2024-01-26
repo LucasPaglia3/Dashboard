@@ -1,14 +1,3 @@
-export const quincenas = [
-  {
-    value: "Primera",
-    label: "Primera",
-  },
-  {
-    value: "Segunda",
-    label: "Segunda",
-  },
-];
-
 export const meses = [
   {
     value: "Enero",
