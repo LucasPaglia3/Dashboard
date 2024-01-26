@@ -1,5 +1,5 @@
 import CardCliente from "@/features/Clientes/CardCliente";
-import CardTrabajos from "./Trabajos/CardTrabajos";
+import CardTrabajos from "../Trabajos/CardTrabajos";
 
 const Cliente = ({ cliente }) => {
   return (
