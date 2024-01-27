@@ -14,7 +14,21 @@ export const getAllTrabajosUrlId = async () => {
   return urlIds;
 };
 
-export const getTrabajo = async (clientId) => {
+export const getTrabajoUrlId = async (urlId) => {
+  let { data: trabajo, error } = await supabase
+    .from("trabajos")
+    .select("*")
+    .eq("urlId", urlId)
+    .single();
+
+  if (error) {
+    throw new Error("Could not get trabajo by urlId" + error.message);
+  }
+
+  return trabajo;
+};
+
+export const getTrabajoClientId = async (clientId) => {
   let { data, error } = await supabase
     .from("trabajos")
     .select("*")
@@ -32,21 +46,22 @@ export const createTrabajo = async (newTrabajo) => {
   const existingUrlId = await getAllTrabajosUrlId(); // Conseguimos todos los valores de la columna urlId.
   const randomId = Math.floor(Math.random() * 9000) + 1000; // Generamos un idRandom de 4 digitos.
 
-  if (!existingUrlId.includes(randomId)) {
-    // Si no existe el id generado en la columna de urlId, creamos un trabajo.
-    let { data, error } = await supabase
-      .from("trabajos")
-      .insert([{ ...newTrabajo, urlId: randomId }]);
-
-    if (error) {
-      throw new Error("Trabajo could not be inserted. " + error.message);
-    }
-
-    return { data, error };
-  } else {
+  if (existingUrlId.includes(randomId)) {
+    // Si existe el id generado en la columna de urlId, tiramos un error.
     const error = new Error(
-      "El id generado para este trabajo ya existe, porfavor intente nuevamete."
+      "El id generado para este trabajo ya existe, ejecutando nuevamente..."
     );
     return error;
   }
+
+  let { data, error } = await supabase
+    .from("trabajos")
+    .insert([{ ...newTrabajo, urlId: randomId }])
+    .select();
+
+  if (error) {
+    throw new Error("Trabajo could not be inserted. " + error.message);
+  }
+
+  return { data, error };
 };

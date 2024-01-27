@@ -11,6 +11,9 @@ export const useCrearCliente = () => {
       toast.success("Cliente creado con éxito!");
       queryClient.invalidateQueries({ queryKey: ["clientes"] });
     },
+    onError: () => {
+      toast.error("No se pudo crear cliente!");
+    },
   });
 
   return { createCliente, isLoading };

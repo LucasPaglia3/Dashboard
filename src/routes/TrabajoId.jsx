@@ -1,14 +1,25 @@
 import PageTitle from "@/components/ui/PageTitle";
-import { Button } from "@/components/ui/button";
+import Spinner from "@/components/ui/Spinner";
 import { Separator } from "@/components/ui/separator";
-import { createTrabajo } from "@/services/apiTrabajos";
+import Trabajo from "@/features/Trabajos/Trabajo";
+import { useTrabajoId } from "@/features/Trabajos/useTrabajoId";
 
 const TrabajoId = () => {
+  const { trabajo, isLoading } = useTrabajoId();
+
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center">
+        <Spinner />
+      </div>
+    );
+
   return (
     <div className="flex flex-col gap-5 h-full">
       <PageTitle title={"Trabajo"} />
       <Separator />
-      <Button onClick={() => createTrabajo(1)} />
+      <Trabajo trabajo={trabajo} />
+      {/* <CreateTrabajo />  // TODO: Usar en /dashboard */}
     </div>
   );
 };
