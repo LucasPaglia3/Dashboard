@@ -4,7 +4,7 @@ import { AtSign } from "lucide-react";
 import { Phone } from "lucide-react";
 import { Hash } from "lucide-react";
 
-import EditCliente from "./EditCliente";
+import EditCliente from "./FormEditCliente";
 
 const CardCliente = ({ cliente }) => {
   return (

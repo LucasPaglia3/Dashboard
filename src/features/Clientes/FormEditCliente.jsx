@@ -61,7 +61,7 @@ const EditCliente = ({ cliente = {} }) => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Agregar nuevo cliente</DialogTitle>
+          <DialogTitle>Editar Cliente</DialogTitle>
           <DialogDescription>
             Rellená los datos correspondientes.
           </DialogDescription>
