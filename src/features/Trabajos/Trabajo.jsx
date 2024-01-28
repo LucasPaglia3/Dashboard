@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 
 const Trabajo = ({ trabajo }) => {
   return (
-    // TODO: Hacer form y dividir en componentes asi no queda tan horrible.
     <Card className="shadow-md h-full w-full pb-12">
       <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
         <CardTitle className="text-md font-medium">
@@ -26,6 +25,8 @@ const Trabajo = ({ trabajo }) => {
           </CardHeader>
           <CardContent className="grid grid-cols-7">
             <Form>
+              {" "}
+              {/* TODO: Hacer form y dividir en componentes asi no queda tan horrible. */}
               <FormLabel className="col-span-1">Name</FormLabel>
               <Input className="col-span-6" />
             </Form>

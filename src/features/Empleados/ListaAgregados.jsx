@@ -27,12 +27,12 @@ const ListAgregados = ({ listaEmp, fullList, setListaEmp }) => {
   };
 
   return (
-    <Card className="shadow-md">
-      <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+    <Card className="relative shadow-md">
+      <CardHeader className="flex flex-row items-center justify-between pb-2">
         <CardTitle className="text-md font-lg">Empleados Agregados:</CardTitle>
       </CardHeader>
       <CardContent className="relative">
-        <div className="grid grid-cols-6 pb-2">
+        <div className="grid grid-cols-6 pb-2 overflow-y-auto max-h-full">
           <div className="flex flex-col col-span-4">
             <h1 className="text-lg font-semibold">Empleado</h1>
             {listaEmp.map((empleado) => (

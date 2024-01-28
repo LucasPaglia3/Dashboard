@@ -2,7 +2,7 @@ import { DataTable } from "@/components/ui/Data-Table";
 import { useClientes } from "./useClientes";
 import { columns } from "./Clientes-Columns";
 import Spinner from "@/components/ui/Spinner";
-import CreateCliente from "./CreateCliente";
+import CreateCliente from "./FormCreateCliente";
 
 const ListaClientes = () => {
   const { clientes, isLoading } = useClientes();
