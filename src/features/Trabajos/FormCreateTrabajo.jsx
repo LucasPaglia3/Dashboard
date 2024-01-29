@@ -26,6 +26,14 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import Spinner from "@/components/ui/Spinner";
 
 import { Plus } from "lucide-react";
 import { ChevronsUpDown } from "lucide-react";
@@ -35,7 +43,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useClientes } from "../Clientes/useClientes";
 import { cn } from "@/lib/utils";
-import Spinner from "@/components/ui/Spinner";
+
 import { useCreateTrabajo } from "./useCreateTrabajo";
 
 const CreateTrabajo = () => {
@@ -47,10 +55,10 @@ const CreateTrabajo = () => {
   if (isLoading) return <Spinner />;
 
   // Creamos un array de objetos para pasarle al componente Command
-  const clientesArray = clientes.clientes.map((cli) => {
+  const clientesArray = clientes.clientes.map((cliente) => {
     return {
-      label: cli.nombre,
-      value: cli.id,
+      label: cliente.nombre,
+      value: cliente.id,
     };
   });
 
@@ -86,7 +94,10 @@ const CreateTrabajo = () => {
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-3 items-baseline"
+          >
             <FormField
               name="idCliente"
               control={form.control}
@@ -112,7 +123,7 @@ const CreateTrabajo = () => {
                           >
                             {field.value
                               ? clientesArray.find(
-                                  (cli) => cli.value === field.value
+                                  (cliente) => cliente.value === field.value
                                 )?.label
                               : "Selecciona un cliente"}
                             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -124,23 +135,23 @@ const CreateTrabajo = () => {
                           <CommandInput placeholder="Busca un cliente..." />
                           <CommandEmpty>No existe ese cliente.</CommandEmpty>
                           <CommandGroup>
-                            {clientesArray.map((cli) => (
+                            {clientesArray.map((cliente) => (
                               <CommandItem
-                                value={cli.label}
-                                key={cli.value}
+                                value={cliente.label}
+                                key={cliente.value}
                                 onSelect={() => {
-                                  form.setValue("idCliente", cli.value);
+                                  form.setValue("idCliente", cliente.value);
                                 }}
                               >
                                 <Check
                                   className={cn(
                                     "mr-2 h-4 w-4",
-                                    cli.value === field.value
+                                    cliente.value === field.value
                                       ? "opacity-100"
                                       : "opacity-0"
                                   )}
                                 />
-                                {cli.label}
+                                {cliente.label}
                               </CommandItem>
                             ))}
                           </CommandGroup>
@@ -151,16 +162,45 @@ const CreateTrabajo = () => {
                 </FormItem>
               )}
             />
-            <Button type="button" onClick={onCancel} disabled={isCreating}>
-              Cancelar
-            </Button>
-            <Button type="submit" variant="confirm" disabled={isCreating}>
-              {isCreating ? (
-                <Spinner isForButton={true} />
-              ) : (
-                <span>Guardar</span>
+            <FormField
+              name="tipo"
+              control={form.control}
+              render={({ field }) => (
+                <FormItem>
+                  <div className="grid grid-cols-7 items-center gap-4">
+                    <FormLabel className="col-span-2 text-left">
+                      Freno o Motor
+                    </FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      {...form.register("tipo", { required: true })}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Seleccione el tipo de trabajo" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Motor">Motor</SelectItem>
+                        <SelectItem value="Freno">Freno</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </FormItem>
               )}
-            </Button>
+            />
+            <div className="flex gap-1">
+              <Button type="button" onClick={onCancel} disabled={isCreating}>
+                Cancelar
+              </Button>
+              <Button type="submit" variant="confirm" disabled={isCreating}>
+                {isCreating ? (
+                  <Spinner isForButton={true} />
+                ) : (
+                  <span>Guardar</span>
+                )}
+              </Button>
+            </div>
           </form>
         </Form>
       </DialogContent>

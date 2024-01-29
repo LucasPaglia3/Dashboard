@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/utils/helpers";
+import { useNavigate } from "react-router-dom";
 
 export const columns = [
   {
@@ -64,10 +65,12 @@ export const columns = [
   {
     id: "actions",
     cell: ({ row }) => {
+      const trabajoId = row.original;
+      const navigate = useNavigate();
       return (
-        <div className="flex justify-center">
-          <Button>Hola</Button>
-        </div>
+        <Button
+          onClick={() => navigate(`/trabajos/${trabajoId.urlId}`)}
+        ></Button>
       );
     },
   },

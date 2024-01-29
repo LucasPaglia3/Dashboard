@@ -32,7 +32,7 @@ const ListAgregados = ({ listaEmp, fullList, setListaEmp }) => {
         <CardTitle className="text-md font-lg">Empleados Agregados:</CardTitle>
       </CardHeader>
       <CardContent className="relative">
-        <div className="grid grid-cols-6 pb-2 overflow-y-auto max-h-full">
+        <div className="grid grid-cols-6 pb-2 overflow-y-auto h-[9.75rem]">
           <div className="flex flex-col col-span-4">
             <h1 className="text-lg font-semibold">Empleado</h1>
             {listaEmp.map((empleado) => (

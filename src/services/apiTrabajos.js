@@ -1,3 +1,4 @@
+import { generateRandomId } from "@/utils/helpers";
 import { supabase } from "./supabase";
 
 export const getAllTrabajosUrlId = async () => {
@@ -44,20 +45,22 @@ export const getTrabajoClientId = async (clientId) => {
 
 export const createTrabajo = async (newTrabajo) => {
   const existingUrlId = await getAllTrabajosUrlId(); // Conseguimos todos los valores de la columna urlId.
-  const randomId = Math.floor(Math.random() * 9000) + 1000; // Generamos un idRandom de 4 digitos.
+  const randomId = generateRandomId(5); // Generamos un idRandom de 4 digitos.
 
   if (existingUrlId.includes(randomId)) {
     // Si existe el id generado en la columna de urlId, tiramos un error.
     const error = new Error(
-      "El id generado para este trabajo ya existe, ejecutando nuevamente..."
+      "El id generado para este trabajo ya existe, intente nuevamente..."
     );
     return error;
   }
 
   let { data, error } = await supabase
     .from("trabajos")
-    .insert([{ ...newTrabajo, urlId: randomId }])
+    .insert([{ ...newTrabajo, urlId: randomId, estado: "espera" }])
     .select();
+
+  console.log(error);
 
   if (error) {
     throw new Error("Trabajo could not be inserted. " + error.message);

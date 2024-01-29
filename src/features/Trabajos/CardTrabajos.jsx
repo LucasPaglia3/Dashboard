@@ -6,7 +6,12 @@ import Spinner from "@/components/ui/Spinner";
 
 const CardTrabajos = () => {
   const { trabajos, isLoading } = useTrabajos();
-  if (isLoading) return <Spinner />;
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center">
+        <Spinner />
+      </div>
+    );
 
   return (
     <Card className="flex flex-col shadow-md ">
