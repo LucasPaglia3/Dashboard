@@ -26,6 +26,14 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import Spinner from "@/components/ui/Spinner";
 
 import { Plus } from "lucide-react";
 import { ChevronsUpDown } from "lucide-react";
@@ -35,10 +43,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useClientes } from "../Clientes/useClientes";
 import { cn } from "@/lib/utils";
-import Spinner from "@/components/ui/Spinner";
+
 import { useCreateTrabajo } from "./useCreateTrabajo";
-import { Select, SelectContent } from "@/components/ui/select";
-import { SelectItem, SelectTrigger, SelectValue } from "@radix-ui/react-select";
 
 const CreateTrabajo = () => {
   const [open, setOpen] = useState();
@@ -88,15 +94,18 @@ const CreateTrabajo = () => {
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-3 items-baseline"
+          >
             <FormField
-              name="idclienteente"
+              name="idCliente"
               control={form.control}
               render={({ field }) => (
                 <FormItem className="flex items-center">
                   <div className="grid grid-cols-7 items-center gap-4">
                     <FormLabel
-                      htmlFor="idclienteente"
+                      htmlFor="idCliente"
                       className="col-span-2 text-left"
                     >
                       Trabajo para:
@@ -116,24 +125,22 @@ const CreateTrabajo = () => {
                               ? clientesArray.find(
                                   (cliente) => cliente.value === field.value
                                 )?.label
-                              : "Selecciona un clienteente"}
+                              : "Selecciona un cliente"}
                             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
                       <PopoverContent className="w-[200px] p-0">
                         <Command>
-                          <CommandInput placeholder="Busca un clienteente..." />
-                          <CommandEmpty>
-                            No existe ese clienteente.
-                          </CommandEmpty>
+                          <CommandInput placeholder="Busca un cliente..." />
+                          <CommandEmpty>No existe ese cliente.</CommandEmpty>
                           <CommandGroup>
                             {clientesArray.map((cliente) => (
                               <CommandItem
                                 value={cliente.label}
                                 key={cliente.value}
                                 onSelect={() => {
-                                  form.setValue("idclienteente", cliente.value);
+                                  form.setValue("idCliente", cliente.value);
                                 }}
                               >
                                 <Check
@@ -158,33 +165,42 @@ const CreateTrabajo = () => {
             <FormField
               name="tipo"
               control={form.control}
-              render={({ field }) => {
+              render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Tipo de trabajo</FormLabel>
-                  <Select onValueChange={field.onChange}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Seleccione el tipo de trabajo" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="Motor">Motor</SelectItem>
-                      <SelectItem value="Freno">Freno</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </FormItem>;
-              }}
-            />
-            <Button type="button" onClick={onCancel} disabled={isCreating}>
-              Cancelar
-            </Button>
-            <Button type="submit" variant="confirm" disabled={isCreating}>
-              {isCreating ? (
-                <Spinner isForButton={true} />
-              ) : (
-                <span>Guardar</span>
+                  <div className="grid grid-cols-7 items-center gap-4">
+                    <FormLabel className="col-span-2 text-left">
+                      Freno o Motor
+                    </FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      {...form.register("tipo", { required: true })}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Seleccione el tipo de trabajo" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Motor">Motor</SelectItem>
+                        <SelectItem value="Freno">Freno</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </FormItem>
               )}
-            </Button>
+            />
+            <div className="flex gap-1">
+              <Button type="button" onClick={onCancel} disabled={isCreating}>
+                Cancelar
+              </Button>
+              <Button type="submit" variant="confirm" disabled={isCreating}>
+                {isCreating ? (
+                  <Spinner isForButton={true} />
+                ) : (
+                  <span>Guardar</span>
+                )}
+              </Button>
+            </div>
           </form>
         </Form>
       </DialogContent>

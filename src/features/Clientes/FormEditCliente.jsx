@@ -39,9 +39,6 @@ const EditCliente = ({ cliente = {} }) => {
         form.reset();
         form.clearErrors();
       },
-      onError: (error) => {
-        console.log(error.message);
-      },
     });
   };
 
