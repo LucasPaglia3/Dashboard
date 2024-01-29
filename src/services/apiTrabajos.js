@@ -1,3 +1,4 @@
+import { generateRandomId } from "@/utils/helpers";
 import { supabase } from "./supabase";
 
 export const getAllTrabajosUrlId = async () => {
@@ -44,7 +45,7 @@ export const getTrabajoClientId = async (clientId) => {
 
 export const createTrabajo = async (newTrabajo) => {
   const existingUrlId = await getAllTrabajosUrlId(); // Conseguimos todos los valores de la columna urlId.
-  const randomId = Math.floor(Math.random() * 9000) + 1000; // Generamos un idRandom de 4 digitos.
+  const randomId = generateRandomId(4); // Generamos un idRandom de 4 digitos.
 
   if (existingUrlId.includes(randomId)) {
     // Si existe el id generado en la columna de urlId, tiramos un error.

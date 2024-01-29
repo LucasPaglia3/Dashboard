@@ -1,3 +1,13 @@
+export const generateRandomId = (length) => {
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+};
+
 export const getMonthName = () => {
   const today = new Date();
   const month = today.toLocaleString("es-AR", { month: "long" });
