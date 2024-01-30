@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/utils/helpers";
 import { useNavigate } from "react-router-dom";
+import { Eye } from "lucide-react";
 
 export const columns = [
   {
@@ -69,8 +70,12 @@ export const columns = [
       const navigate = useNavigate();
       return (
         <Button
+          variant="outline"
+          className="p-2 flex gap-2"
           onClick={() => navigate(`/trabajos/${trabajoId.urlId}`)}
-        ></Button>
+        >
+          <Eye /> Detalles
+        </Button>
       );
     },
   },

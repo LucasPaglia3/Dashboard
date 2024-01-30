@@ -1,4 +1,4 @@
-import PageTitle from "@/components/ui/PageTitle";
+import PageTitle from "@/components/ui/PageHeader";
 import Spinner from "@/components/ui/Spinner";
 import { Separator } from "@/components/ui/separator";
 import Cliente from "@/features/Clientes/Cliente";

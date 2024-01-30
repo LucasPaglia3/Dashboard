@@ -20,7 +20,7 @@ const Trabajo = ({ trabajo }) => {
     <Spinner />
   </div>;
   return (
-    <Card className="shadow-md h-full w-full pb-12">
+    <Card className="shadow-md h-vh w-full pb-12">
       <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
         <CardTitle className="text-md font-medium">
           Detalles de trabajo:
@@ -47,7 +47,7 @@ const Trabajo = ({ trabajo }) => {
               <Separator />
             </div>
             <div className="col-start-1 col-end-1">
-              <div className="grid grid-rows-6 pt-3 gap-2">
+              <div className="grid grid-rows-4 md:grid-rows-6 pt-3 gap-2">
                 <div className="flex flex-col gap-2">
                   <div className="flex gap-2 items-center">
                     {<BadgeInfo size={21} />}
@@ -55,7 +55,7 @@ const Trabajo = ({ trabajo }) => {
                   </div>
                   <span className="pl-8 pb-3">
                     {trabajo.marca === null
-                      ? "Especificar nombre"
+                      ? "Especificar marca"
                       : trabajo.marca}
                   </span>
                 </div>
@@ -66,7 +66,7 @@ const Trabajo = ({ trabajo }) => {
                   </div>
                   <span className="pl-8">
                     {trabajo.cuerpo === null
-                      ? "Especificar nombre"
+                      ? "Especificar cuerpo"
                       : trabajo.cuerpo}
                   </span>
                 </div>
@@ -77,7 +77,7 @@ const Trabajo = ({ trabajo }) => {
                   </div>
                   <span className="pl-8">
                     {trabajo.diametroInterior === null
-                      ? "Especificar nombre"
+                      ? "Especificar diámetro interior"
                       : trabajo.diametroInterior}
                   </span>
                 </div>
@@ -88,14 +88,14 @@ const Trabajo = ({ trabajo }) => {
                   </div>
                   <span className="pl-8">
                     {trabajo.diametroExterior === null
-                      ? "Especificar nombre"
+                      ? "Especificar diámetro exterior"
                       : trabajo.diametroExterior}
                   </span>
                 </div>
               </div>
             </div>
-            <div className="col-start-2 col-end-2">
-              <div className="grid grid-rows-6 pt-3 gap-2">
+            <div className="col-start-1 col-end-1 md:col-start-2 md:col-end-2">
+              <div className="grid grid-rows-4 md:grid-rows-6 pt-3 gap-2">
                 <div className="flex flex-col gap-2">
                   <div className="flex gap-2 items-center">
                     {<Diameter strokeWidth={2} size={21} />}

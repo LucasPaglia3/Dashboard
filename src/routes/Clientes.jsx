@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import PageTitle from "../components/ui/PageTitle";
+import PageTitle from "../components/ui/PageHeader";
 import ListaClientes from "@/features/Clientes/ListaClientes";
 
 const Clientes = () => {
