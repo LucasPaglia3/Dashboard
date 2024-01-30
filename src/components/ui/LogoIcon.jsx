@@ -1,10 +1,10 @@
-const LogoIcon = ({ size }) => {
+const LogoIcon = () => {
   return (
     <svg
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
-      width={`${size}px`}
-      height={`${size}px`}
+      width="80px"
+      height="80px"
       viewBox="0 0 1440.000000 1370.000000"
       preserveAspectRatio="xMidYMid meet"
     >

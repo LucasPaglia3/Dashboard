@@ -10,7 +10,7 @@ import { LayoutDashboard } from "lucide-react";
 import { Menu } from "lucide-react";
 import { X } from "lucide-react";
 
-const PageTitle = ({ title }) => {
+const PageHeader = ({ title }) => {
   const [openNav, setOpenNav] = useState(false);
 
   return (
@@ -82,4 +82,4 @@ const PageTitle = ({ title }) => {
   );
 };
 
-export default PageTitle;
+export default PageHeader;

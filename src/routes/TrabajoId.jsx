@@ -1,4 +1,4 @@
-import PageTitle from "@/components/ui/PageHeader";
+import PageHeader from "@/components/ui/PageHeader";
 import Spinner from "@/components/ui/Spinner";
 import { Separator } from "@/components/ui/separator";
 import Trabajo from "@/features/Trabajos/Trabajo";
@@ -16,7 +16,7 @@ const TrabajoId = () => {
 
   return (
     <div className="flex flex-col gap-5 h-full">
-      <PageTitle title={"Trabajo"} />
+      <PageHeader title={"Trabajo"} />
       <Separator />
       <Trabajo trabajo={trabajo} />
       {/* <CreateTrabajo />  // TODO: Usar en /dashboard */}

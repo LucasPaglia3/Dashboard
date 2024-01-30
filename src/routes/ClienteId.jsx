@@ -1,4 +1,4 @@
-import PageTitle from "@/components/ui/PageHeader";
+import PageHeader from "@/components/ui/PageHeader";
 import Spinner from "@/components/ui/Spinner";
 import { Separator } from "@/components/ui/separator";
 import Cliente from "@/features/Clientes/Cliente";
@@ -18,7 +18,7 @@ const ClienteId = () => {
 
   return (
     <div className="flex flex-col gap-5 h-full">
-      <PageTitle title="Cliente" />
+      <PageHeader title="Cliente" />
       <Separator />
       <Cliente cliente={cliente} />
     </div>
