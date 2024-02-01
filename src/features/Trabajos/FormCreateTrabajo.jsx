@@ -131,7 +131,14 @@ const CreateTrabajo = () => {
                         </FormControl>
                       </PopoverTrigger>
                       <PopoverContent className="w-[200px] p-0">
-                        <Command>
+                        <Command
+                          {...form.register("idCliente", {
+                            required: {
+                              value: true,
+                              message: "Elegí un cliente!",
+                            },
+                          })}
+                        >
                           <CommandInput placeholder="Busca un cliente..." />
                           <CommandEmpty>No existe ese cliente.</CommandEmpty>
                           <CommandGroup>
@@ -173,7 +180,9 @@ const CreateTrabajo = () => {
                     </FormLabel>
                     <Select
                       onValueChange={field.onChange}
-                      {...form.register("tipo", { required: true })}
+                      {...form.register("tipo", {
+                        required: { value: true, message: "Elegí una opción!" },
+                      })}
                     >
                       <FormControl>
                         <SelectTrigger>

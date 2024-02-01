@@ -14,8 +14,6 @@ const ClienteId = () => {
       </div>
     );
 
-  console.log(cliente);
-
   return (
     <div className="flex flex-col gap-5 h-full">
       <PageHeader title="Cliente" />

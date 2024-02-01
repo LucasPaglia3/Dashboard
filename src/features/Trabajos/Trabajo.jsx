@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { useClienteId } from "../Clientes/useCliente";
+import FormEditTrabajo from "./FormEditTrabajo";
 
 import { BadgeInfo } from "lucide-react";
 import { Cylinder } from "lucide-react";
@@ -13,7 +14,6 @@ import Spinner from "@/components/ui/Spinner";
 
 const Trabajo = ({ trabajo }) => {
   const { cliente, isLoading } = useClienteId(trabajo.idCliente);
-  console.log(trabajo.marca);
 
   if (isLoading) return;
   <div className="flex justify-center items-center">
@@ -25,6 +25,7 @@ const Trabajo = ({ trabajo }) => {
         <CardTitle className="text-md font-medium">
           Detalles de trabajo:
         </CardTitle>
+        <FormEditTrabajo trabajo={trabajo} />
       </CardHeader>
       <CardContent className="grid grid-cols-1 lg:grid-cols-5 gap-3 h-full">
         <Card className="shadow-md col-span-1 lg:col-span-2 h-full">
