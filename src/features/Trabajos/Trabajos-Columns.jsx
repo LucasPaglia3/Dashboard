@@ -58,10 +58,19 @@ export const columns = [
   },
   {
     accessorKey: "fechaSalida",
-    filterFn: (row, fechaSalida, value) => {
-      return value.includes(row.getValue(fechaSalida));
-    },
     header: "Fecha de Salida",
+    cell: ({ row }) => {
+      const timestampz = row.getValue("fechaSalida");
+      const formatted = formatDate(timestampz);
+
+      return (
+        <div>
+          {row.getValue("fechaSalida") === null
+            ? "No entregado aún"
+            : formatted}
+        </div>
+      );
+    },
   },
   {
     id: "actions",

@@ -81,20 +81,21 @@ export const createTrabajo = async (newTrabajo) => {
 
 export const editTrabajo = async (newTrabajo, idToEdit) => {
   const hasImagePath = newTrabajo.image?.startsWith?.(supabaseUrl); // Nos fijamos si ya tiene un path la imagen
-  const imageName = `${Math.random()}-${newTrabajo.image.name}`.replaceAll(
-    // Creamos un nombre para la imagen
-    "/",
-    ""
-  );
+  const imageName =
+    newTrabajo.image !== null &&
+    `${Math.random()}-${newTrabajo.image.name}`.replaceAll(
+      // Creamos un nombre para la imagen
+      "/",
+      ""
+    );
 
-  console.log(hasImagePath);
-  console.log(imageName);
+  let imagePath = null;
 
-  const imagePath = hasImagePath
-    ? newTrabajo.image
-    : `${supabaseUrl}/storage/v1/object/public/trabajos-images/${imageName}`; // Si no tiene un path, creamos uno con incluyendo el nombre de la img.
-
-  console.log(idToEdit);
+  if (newTrabajo.image !== null) {
+    imagePath = hasImagePath
+      ? newTrabajo.image
+      : `${supabaseUrl}/storage/v1/object/public/trabajos-images/${imageName}`; // Si no tiene un path, creamos uno con incluyendo el nombre de la img.
+  }
 
   let { data, error } = await supabase
     .from("trabajos")
@@ -106,13 +107,15 @@ export const editTrabajo = async (newTrabajo, idToEdit) => {
     throw new Error("Trabajo could not be updated. " + error.message);
   }
 
-  // Subimos la img
-  const { storageError } = await supabase.storage
-    .from("trabajos-images")
-    .upload(imageName, newTrabajo.image);
+  if (newTrabajo.image !== null) {
+    // Subimos la img
+    const { storageError } = await supabase.storage
+      .from("trabajos-images")
+      .upload(imageName, newTrabajo.image);
 
-  if (storageError) {
-    throw new Error("Could not upload an image for trabajos.");
+    if (storageError) {
+      throw new Error("Could not upload an image for trabajos.");
+    }
   }
 
   return data;

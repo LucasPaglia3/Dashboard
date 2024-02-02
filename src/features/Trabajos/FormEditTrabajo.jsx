@@ -46,12 +46,22 @@ const FormEditTrabajo = ({ trabajo = {} }) => {
   const { editTrabajo, isEditing } = useEditTrabajo();
 
   const onSubmit = (data) => {
-    const image = typeof data.image === "string" ? data.image : data.image[0];
+    let image = null;
+    if (data.image !== null) {
+      image = typeof data.image === "string" ? data.image : data.image[0];
+    }
+
+    const nuevaFechaSalida =
+      data.estado === "entregado" ? new Date().toISOString() : null;
+
     editTrabajo(
-      { newTrabajo: { ...data, image }, id: idToEdit },
+      {
+        newTrabajo: { ...data, image, fechaSalida: nuevaFechaSalida },
+        id: idToEdit,
+      },
       { onSuccess: () => setOpen(!open) }
     );
-    console.log({ ...data, image, id: idToEdit });
+    console.log({ ...data, image, nuevaFechaSalida, id: idToEdit });
   };
 
   const onCancel = () => {
