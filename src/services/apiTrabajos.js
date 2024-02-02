@@ -1,6 +1,16 @@
 import { generateRandomId } from "@/utils/helpers";
 import { supabase, supabaseUrl } from "./supabase";
 
+export const getAllTrabajos = async () => {
+  let { data, error } = await supabase.from("trabajos").select("*");
+
+  if (error) {
+    throw new Error("Could not get Trabajos" + error.message);
+  }
+
+  return data;
+};
+
 export const getAllTrabajosUrlId = async () => {
   let { data, error } = await supabase.from("trabajos").select("urlId");
 

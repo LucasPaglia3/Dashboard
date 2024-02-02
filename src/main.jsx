@@ -12,6 +12,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ClienteId from "./routes/ClienteId";
 import Horas from "./routes/HorasPage.jsx";
 import TrabajoId from "./routes/TrabajoId";
+import Dashboard from "./routes/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "",
+        element: <Dashboard />,
+      },
       {
         path: "empleados/horas",
         element: <Horas />,

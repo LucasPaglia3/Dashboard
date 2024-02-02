@@ -81,6 +81,34 @@ const FormEditTrabajo = ({ trabajo = {} }) => {
           >
             <div className="col-start-1 flex flex-col gap-3">
               <FormField
+                name="estado"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="grid grid-cols-6 items-center gap-12">
+                      <FormLabel htmlFor="estado">Estado</FormLabel>
+                      <Select
+                        value={field.value}
+                        onValueChange={field.onChange}
+                        {...form.register("estado")}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Seleccione la estado" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="espera">Espera</SelectItem>
+                          <SelectItem value="bobinando">Bobinando</SelectItem>
+                          <SelectItem value="terminado">Terminado</SelectItem>
+                          <SelectItem value="entregado">Entregado</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </FormItem>
+                )}
+              />
+              <FormField
                 name="marca"
                 control={form.control}
                 render={({ field }) => (

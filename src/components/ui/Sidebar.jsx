@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import SideBarItem from "./SidebarItem";
 import { Separator } from "@/components/ui/separator";
 
@@ -8,8 +7,6 @@ import { Building2 } from "lucide-react";
 import LogoIcon from "./LogoIcon";
 
 const SideBar = () => {
-  const location = useLocation();
-  console.log(location.pathname);
   return (
     <>
       <nav className="h-screen sticky top-0 lg:flex bg-gray-100/60 flex-col hidden px-2 lg:w-60 border-r items-center">
