@@ -33,13 +33,14 @@ const ListAgregados = ({ listaEmp, fullList, setListaEmp }) => {
       </CardHeader>
       <CardContent className="relative">
         <div className="grid grid-cols-6 pb-2 overflow-y-auto h-[9.75rem]">
-          <div className="flex flex-col col-span-4">
+          <div className="flex flex-col lg:col-span-4 col-span-3">
             <h1 className="text-lg font-semibold">Empleado</h1>
             {listaEmp.map((empleado) => (
               <span key={empleado.horas}>{empleado.empleado}</span>
             ))}
           </div>
-          <div className="flex flex-col text-center">
+
+          <div className="flex flex-col text-center col-span-2">
             <h1 className="text-lg font-semibold">Horas</h1>
             {listaEmp.map((empleado) => (
               <span key={empleado.empleado}>{empleado.horas}</span>

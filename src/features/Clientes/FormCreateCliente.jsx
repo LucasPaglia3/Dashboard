@@ -51,7 +51,8 @@ const CreateCliente = () => {
       <DialogTrigger>
         <Button variant="blue" className="flex items-center">
           <Plus className="mr-1 h-5 w-5" />
-          <span>Agregar nuevo cliente</span>
+          <span className="sm:block hidden">Agregar nuevo cliente</span>
+          <span className="sm:hidden block">Nuevo cliente</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">

@@ -19,7 +19,7 @@ const Root = () => {
         theme="colored"
       />
       <SideBar />
-      <div className=" h-full block py-9 px-4 bg-white grow overflow-auto">
+      <div className=" h-full block py-2 lg:py-9 px-4 bg-white grow overflow-auto">
         <Outlet />
       </div>
     </main>

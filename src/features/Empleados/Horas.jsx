@@ -36,7 +36,7 @@ const Horas = () => {
 
   return (
     <div className="grid grid-cols-1 xl:grid-cols-5 gap-x-4 gap-y-2">
-      <div className=" lg:col-span-2">
+      <div className="lg:col-span-2">
         <FormAgregar onSubmit={onSubmit} fullList={fullList} emp={emp} />
       </div>
 

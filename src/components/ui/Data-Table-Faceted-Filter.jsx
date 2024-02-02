@@ -115,7 +115,7 @@ export function DataTableFacetedFilter({ column, title, options }) {
                 <CommandSeparator />
                 <CommandGroup>
                   <CommandItem
-                    onSelect={() => column?.setFilterValue(value)}
+                    onSelect={() => column?.setFilterValue("")}
                     className="justify-center text-center"
                   >
                     Clear filters

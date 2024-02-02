@@ -1,11 +1,11 @@
 import { Separator } from "@/components/ui/separator";
-import PageTitle from "../components/ui/PageTitle";
+import PageHeader from "../components/ui/PageHeader";
 import ListaClientes from "@/features/Clientes/ListaClientes";
 
 const Clientes = () => {
   return (
     <div className="flex flex-col gap-5 h-full">
-      <PageTitle title={"Clientes"} />
+      <PageHeader title={"Clientes"} />
       <Separator />
       <ListaClientes />
     </div>
