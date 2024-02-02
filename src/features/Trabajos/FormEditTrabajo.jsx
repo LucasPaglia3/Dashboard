@@ -41,6 +41,7 @@ const FormEditTrabajo = ({ trabajo = {} }) => {
   const form = useForm({
     defaultValues: trabajo,
   });
+  const selectedOption = form.watch("marca"); // Se fija constantemente en el valor de marca para cambiar el form de forma dinámica.
 
   const { editTrabajo, isEditing } = useEditTrabajo();
 
@@ -155,7 +156,7 @@ const FormEditTrabajo = ({ trabajo = {} }) => {
               />
 
               {(trabajo.tipo === "Motor" ||
-                (trabajo.tipo === "Freno" && trabajo.marca === "Otro")) && (
+                (trabajo.tipo === "Freno" && selectedOption === "Otro")) && (
                 <>
                   <FormField
                     name="diametroInterior"
