@@ -32,7 +32,9 @@ const Trabajo = ({ trabajo }) => {
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
             <CardTitle className="text-md font-medium">Imagen</CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col items-center">IMG</CardContent>
+          <CardContent className="flex flex-col items-center">
+            <img src={trabajo.image} alt={`Imagen ${trabajo.tipo}`} />
+          </CardContent>
         </Card>
         <Card className="shadow-md col-span-1 lg:col-span-3 h-full">
           <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">

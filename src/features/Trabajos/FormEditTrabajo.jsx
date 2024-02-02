@@ -32,17 +32,25 @@ import {
   cuerpos,
 } from "@/lib/datosFrenosYMotores";
 import { Input } from "@/components/ui/input";
+import { useEditTrabajo } from "./useEditTrabajo";
+import Spinner from "@/components/ui/Spinner";
 
 const FormEditTrabajo = ({ trabajo = {} }) => {
   const [open, setOpen] = useState(false);
+  const { id: idToEdit } = trabajo;
   const form = useForm({
     defaultValues: trabajo,
   });
 
-  console.log(trabajo);
+  const { editTrabajo, isEditing } = useEditTrabajo();
 
-  const onSubmit = () => {
-    console.log("submit");
+  const onSubmit = (data) => {
+    const image = typeof data.image === "string" ? data.image : data.image[0];
+    editTrabajo(
+      { newTrabajo: { ...data, image }, id: idToEdit },
+      { onSuccess: () => setOpen(!open) }
+    );
+    console.log({ ...data, image, id: idToEdit });
   };
 
   const onCancel = () => {
@@ -68,7 +76,7 @@ const FormEditTrabajo = ({ trabajo = {} }) => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col items-center gap-3 md:grid md:grid-cols-2 md:gap-0"
+            className="flex flex-col items-center gap-3 md:grid md:grid-cols-2 md:gap-2"
           >
             <div className="col-start-1 flex flex-col gap-3">
               <FormField
@@ -186,7 +194,7 @@ const FormEditTrabajo = ({ trabajo = {} }) => {
                           <Input
                             value={field.value}
                             placeholder="Diámetro Externo"
-                            className="col-span-3  w-fit"
+                            className="col-span-3 w-fit"
                             {...form.register("diametroExterior")}
                           />
                         </div>
@@ -195,24 +203,47 @@ const FormEditTrabajo = ({ trabajo = {} }) => {
                   />
                 </>
               )}
+              <FormField
+                name="image"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="grid grid-cols-6 items-center gap-12 w-full">
+                      <FormLabel
+                        htmlFor="image"
+                        className="col-span-1 text-right"
+                      >
+                        Imagen
+                      </FormLabel>
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        className="col-span-4 w-full file:bg-slate-200 file:rounded-md bg-slate-100/20"
+                        {...form.register("image")}
+                      />
+                    </div>
+                  </FormItem>
+                )}
+              />
             </div>
             <div className="col-start-2 flex flex-col gap-3">
               <FormField
-                name="diametroCobre"
+                name="diametroAlambre"
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
                     <div className="grid grid-cols-6 items-center gap-12">
                       <FormLabel
-                        htmlFor="diametroCobre"
+                        htmlFor="diametroAlambre"
                         className="col-span-1 text-right"
                       >
                         Diámetro Cobre
                       </FormLabel>
                       <Input
+                        value={field.value}
                         placeholder="Diámetro Cobre"
                         className="col-span-3 w-fit"
-                        {...form.register("diametroCobre")}
+                        {...form.register("diametroAlambre")}
                       />
                     </div>
                   </FormItem>
@@ -231,6 +262,7 @@ const FormEditTrabajo = ({ trabajo = {} }) => {
                         Número Espiras
                       </FormLabel>
                       <Input
+                        value={field.value}
                         placeholder="Número de espiras"
                         className="col-span-3 w-fit"
                         {...form.register("espiras")}
@@ -239,6 +271,18 @@ const FormEditTrabajo = ({ trabajo = {} }) => {
                   </FormItem>
                 )}
               />
+            </div>
+            <div className="flex gap-1">
+              <Button type="button" onClick={onCancel} disabled={isEditing}>
+                Cancelar
+              </Button>
+              <Button type="submit" variant="confirm" disabled={isEditing}>
+                {isEditing ? (
+                  <Spinner isForButton={true} />
+                ) : (
+                  <span>Guardar</span>
+                )}
+              </Button>
             </div>
           </form>
         </Form>

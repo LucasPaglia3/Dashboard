@@ -9,7 +9,6 @@ export const useTrabajoId = () => {
     queryFn: () => getTrabajoUrlId(urlId),
     retry: false,
   });
-  console.log(urlId);
 
   return { trabajo, isLoading };
 };

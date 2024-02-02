@@ -1,5 +1,5 @@
 import { generateRandomId } from "@/utils/helpers";
-import { supabase } from "./supabase";
+import { supabase, supabaseUrl } from "./supabase";
 
 export const getAllTrabajosUrlId = async () => {
   let { data, error } = await supabase.from("trabajos").select("urlId");
@@ -66,5 +66,44 @@ export const createTrabajo = async (newTrabajo) => {
     throw new Error("Trabajo could not be inserted. " + error.message);
   }
 
-  return { data, error };
+  return data;
+};
+
+export const editTrabajo = async (newTrabajo, idToEdit) => {
+  const hasImagePath = newTrabajo.image?.startsWith?.(supabaseUrl); // Nos fijamos si ya tiene un path la imagen
+  const imageName = `${Math.random()}-${newTrabajo.image.name}`.replaceAll(
+    // Creamos un nombre para la imagen
+    "/",
+    ""
+  );
+
+  console.log(hasImagePath);
+  console.log(imageName);
+
+  const imagePath = hasImagePath
+    ? newTrabajo.image
+    : `${supabaseUrl}/storage/v1/object/public/trabajos-images/${imageName}`; // Si no tiene un path, creamos uno con incluyendo el nombre de la img.
+
+  console.log(idToEdit);
+
+  let { data, error } = await supabase
+    .from("trabajos")
+    .update({ ...newTrabajo, image: imagePath })
+    .eq("id", idToEdit)
+    .select();
+
+  if (error) {
+    throw new Error("Trabajo could not be updated. " + error.message);
+  }
+
+  // Subimos la img
+  const { storageError } = await supabase.storage
+    .from("trabajos-images")
+    .upload(imageName, newTrabajo.image);
+
+  if (storageError) {
+    throw new Error("Could not upload an image for trabajos.");
+  }
+
+  return data;
 };
