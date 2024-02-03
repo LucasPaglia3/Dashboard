@@ -24,7 +24,7 @@ import { useForm } from "react-hook-form";
 import { useCrearCliente } from "./useCrearCliente";
 import Spinner from "@/components/ui/Spinner";
 
-const CreateCliente = () => {
+const FormCreateCliente = () => {
   const [open, setOpen] = useState(false);
   const form = useForm();
 
@@ -201,4 +201,4 @@ const CreateCliente = () => {
   );
 };
 
-export default CreateCliente;
+export default FormCreateCliente;

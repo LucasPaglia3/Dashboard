@@ -13,6 +13,7 @@ import ClienteId from "./routes/ClienteId";
 import Horas from "./routes/HorasPage.jsx";
 import TrabajoId from "./routes/TrabajoId";
 import Dashboard from "./routes/Dashboard";
+import Login from "./routes/Login";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
         element: <TrabajoId />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 

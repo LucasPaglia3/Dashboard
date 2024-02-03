@@ -46,7 +46,7 @@ import { cn } from "@/lib/utils";
 
 import { useCreateTrabajo } from "./useCreateTrabajo";
 
-const CreateTrabajo = () => {
+const FormCreateTrabajo = () => {
   const [open, setOpen] = useState();
   const form = useForm();
 
@@ -55,7 +55,7 @@ const CreateTrabajo = () => {
   if (isLoading) return <Spinner />;
 
   // Creamos un array de objetos para pasarle al componente Command
-  const clientesArray = clientes.clientes.map((cliente) => {
+  const clientesArray = clientes.map((cliente) => {
     return {
       label: cliente.nombre,
       value: cliente.id,
@@ -217,4 +217,4 @@ const CreateTrabajo = () => {
   );
 };
 
-export default CreateTrabajo;
+export default FormCreateTrabajo;

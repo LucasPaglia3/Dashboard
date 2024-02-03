@@ -5,7 +5,7 @@ const CardStats = ({ title, data, icon, color }) => {
     <Card className="w-[18rem] shadow-md">
       <CardContent className="p-4 flex gap-3">
         <div
-          className={` bg-${color}-200 w-20 h-20 rounded-full flex items-center justify-center`}
+          className={`bg-slate-100 w-20 h-20 rounded-full flex items-center justify-center`}
         >
           {icon}
         </div>

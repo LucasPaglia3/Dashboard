@@ -7,7 +7,7 @@ export const getAllClientes = async () => {
     throw new Error("Clientes could not be loaded. " + error.message);
   }
 
-  return { clientes };
+  return clientes;
 };
 
 export const getCliente = async (id) => {
