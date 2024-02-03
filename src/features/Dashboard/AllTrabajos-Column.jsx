@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { formatDate } from "@/utils/helpers";
 import { useNavigate } from "react-router-dom";
 import { Eye } from "lucide-react";
+import { useClienteId } from "../Clientes/useCliente";
+import Spinner from "@/components/ui/Spinner";
 
 export const columns = [
   {
@@ -11,6 +13,17 @@ export const columns = [
       return value.includes(row.getValue(tipo));
     },
     header: "Tipo",
+  },
+  {
+    accessorKey: "idCliente",
+    header: "Cliente",
+    cell: ({ row }) => {
+      const idCliente = row.getValue("idCliente");
+      const { cliente, isLoading } = useClienteId(idCliente);
+      if (isLoading) return <Spinner isForButton={true} />;
+
+      return <div>{cliente.nombre}</div>;
+    },
   },
   {
     accessorKey: "fechaEntrada",

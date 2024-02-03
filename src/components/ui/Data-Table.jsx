@@ -24,6 +24,7 @@ import { meses } from "@/features/Empleados/Filters";
 import { X } from "lucide-react";
 import { useState } from "react";
 import { ScrollArea, ScrollBar } from "./scroll-area";
+import { Input } from "./input";
 
 export function DataTable({
   columns,
@@ -64,6 +65,18 @@ export function DataTable({
           label: row.original.nombre,
         };
       });
+      break;
+    case "tipo":
+      filterOptions = [
+        {
+          value: "Freno",
+          label: "Freno",
+        },
+        {
+          value: "Motor",
+          label: "Motor",
+        },
+      ];
   }
 
   return (

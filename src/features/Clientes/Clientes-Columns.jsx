@@ -7,6 +7,7 @@ export const columns = [
   {
     accessorKey: "nombre",
     filterFn: (row, nombre, value) => {
+      console.log(row.getValue(nombre));
       return value.includes(row.getValue(nombre));
     },
     header: "Nombre Cliente",

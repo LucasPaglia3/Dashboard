@@ -9,12 +9,11 @@ export const useEditCliente = () => {
   const { mutate: editCliente, isPending: isLoading } = useMutation({
     mutationFn: (editedCliente) => {
       apiEditCliente(editedCliente, clienteId);
-      console.log(editedCliente);
     },
-    mutationKey: ["clientes"],
+    mutationKey: ["clientes", clienteId],
     onSuccess: () => {
       toast.success("Cliente editado con exito!");
-      queryClient.invalidateQueries({ queryKey: ["clientes"] });
+      queryClient.invalidateQueries();
     },
   });
 

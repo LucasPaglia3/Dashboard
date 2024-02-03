@@ -40,7 +40,7 @@ const ListAgregados = ({ listaEmp, fullList, setListaEmp }) => {
             ))}
           </div>
 
-          <div className="flex flex-col text-center col-span-2">
+          <div className="flex flex-col text-center">
             <h1 className="text-lg font-semibold">Horas</h1>
             {listaEmp.map((empleado) => (
               <span key={empleado.empleado}>{empleado.horas}</span>

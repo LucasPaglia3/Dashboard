@@ -1,11 +1,11 @@
 import { DataTable } from "@/components/ui/Data-Table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { columns } from "./Trabajos-Columns";
-import { useTrabajos } from "./useTrabajos";
+import { useTrabajosId } from "./useTrabajosId";
 import Spinner from "@/components/ui/Spinner";
 
 const CardTrabajos = () => {
-  const { trabajos, isLoading } = useTrabajos();
+  const { trabajos, isLoading } = useTrabajosId();
   if (isLoading)
     return (
       <div className="flex items-center justify-center">

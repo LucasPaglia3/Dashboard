@@ -8,7 +8,6 @@ const ListaClientes = () => {
   const { clientes, isLoading } = useClientes();
 
   if (isLoading) return <Spinner />;
-  const clientesArray = clientes.clientes;
 
   return (
     <div className="flex flex-col">
@@ -18,7 +17,7 @@ const ListaClientes = () => {
       </div>
       <div className="w-auto">
         <DataTable
-          data={clientesArray}
+          data={clientes}
           columns={columns}
           usesFacetedFilter="nombre"
           filterTitle="Nombre"
