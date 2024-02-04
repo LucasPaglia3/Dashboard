@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from "./routes/Root.jsx";
+import AppLayout from "./routes/AppLayout.jsx";
 import ErrorPage from "./routes/Error-Page.jsx";
 import Clientes from "./routes/Clientes";
 
@@ -14,13 +14,18 @@ import Horas from "./routes/HorasPage.jsx";
 import TrabajoId from "./routes/TrabajoId";
 import Dashboard from "./routes/Dashboard";
 import Login from "./routes/Login";
+import ProtectedRoute from "./components/ui/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: (
+      <ProtectedRoute>
+        <AppLayout />
+      </ProtectedRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
