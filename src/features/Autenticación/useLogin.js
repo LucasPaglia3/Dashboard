@@ -9,8 +9,8 @@ export const useLogin = () => {
   const { mutate: login, isPending: isLoggingIn } = useMutation({
     mutationFn: ({ email, password }) => apiLogin({ email, password }),
     onSuccess: (data) => {
-      queryClient.setQueryData(["user"], data);
-      navigate("/");
+      queryClient.setQueryData(["user"], data.user);
+      navigate("/", { replace: true });
     },
     onError: () => {
       toast.error("El usuario y/o la contraseña ingresada son incorrectos!");
