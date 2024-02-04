@@ -9,6 +9,8 @@ const ListaClientes = () => {
 
   if (isLoading) return <Spinner />;
 
+  console.log(clientes);
+
   return (
     <div className="flex flex-col">
       <div className="flex justify-between">

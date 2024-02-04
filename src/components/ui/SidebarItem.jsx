@@ -7,7 +7,7 @@ const SideBarItem = ({ children, icon, path }) => {
       className={({ isActive }) =>
         isActive
           ? "flex flex-row p-2 items-center gap-2 lg:w-56 bg-indigo-100 text-blue-800 rounded-lg cursor-pointer transition-all duration-300"
-          : "flex flex-row p-2 items-center gap-2 lg:w-56 hover:bg-indigo-100/50 hover:text-blue-600 rounded-lg cursor-pointer transition-all duration-500"
+          : "flex flex-row p-2 items-center gap-2 lg:w-56 hover:bg-indigo-100/50 hover:text-blue-600 rounded-lg cursor-pointer transition-all duration-200"
       }
     >
       {icon}

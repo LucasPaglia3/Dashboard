@@ -8,8 +8,6 @@ const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
   const { user, isLoading, isAuthenticated } = useCurrentUser();
 
-  console.log(isAuthenticated);
-
   useEffect(() => {
     if (!isAuthenticated && !isLoading) navigate("/login");
   }, [isAuthenticated, navigate, isLoading]);

@@ -15,6 +15,7 @@ import TrabajoId from "./routes/TrabajoId";
 import Dashboard from "./routes/Dashboard";
 import Login from "./routes/Login";
 import ProtectedRoute from "./components/ui/ProtectedRoute";
+import Empleados from "./routes/Empleados";
 
 const queryClient = new QueryClient();
 
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "empleados/horas",
+        path: "empleados",
+        element: <Empleados />,
+      },
+      {
+        path: "horas",
         element: <Horas />,
       },
       {
