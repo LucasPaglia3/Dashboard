@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/utils/helpers";
 import { useNavigate } from "react-router-dom";
-import { Eye } from "lucide-react";
+import { Info } from "lucide-react";
 import { useClienteId } from "../Clientes/useCliente";
 import Spinner from "@/components/ui/Spinner";
 
@@ -96,7 +96,7 @@ export const columns = [
           className="p-2 flex gap-2 shadow-sm border-gray-400/40"
           onClick={() => navigate(`/trabajos/${trabajoId.urlId}`)}
         >
-          <Eye /> Detalles
+          <Info /> Detalles
         </Button>
       );
     },
