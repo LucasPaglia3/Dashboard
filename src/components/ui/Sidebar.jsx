@@ -5,6 +5,8 @@ import { LayoutDashboard } from "lucide-react";
 import { Users } from "lucide-react";
 import { Building2 } from "lucide-react";
 import LogoIcon from "./LogoIcon";
+import Logout from "@/features/Autenticación/Logout";
+import CollapsableSideBarItem from "./CollapsableSidebarItem";
 
 const SideBar = () => {
   return (
@@ -21,9 +23,12 @@ const SideBar = () => {
           <SideBarItem icon={<Building2 />} path={"/clientes"}>
             Clientes
           </SideBarItem>
-          <SideBarItem icon={<Users />} path={"/empleados/horas"}>
+          <CollapsableSideBarItem icon={<Users />}>
             Empleados
-          </SideBarItem>
+          </CollapsableSideBarItem>
+        </div>
+        <div className="mb-2 flex gap-3">
+          <Logout />
         </div>
       </nav>
     </>

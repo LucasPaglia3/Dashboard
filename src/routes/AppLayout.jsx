@@ -3,7 +3,7 @@ import SideBar from "../components/ui/Sidebar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Root = () => {
+const AppLayout = () => {
   return (
     <main className="flex relative w-full h-dvh overflow-auto">
       <ToastContainer
@@ -26,4 +26,4 @@ const Root = () => {
   );
 };
 
-export default Root;
+export default AppLayout;

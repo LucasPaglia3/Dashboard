@@ -15,9 +15,8 @@ const Horas = () => {
   const { historial, isLoading: isLoading2 } = useHistorial();
 
   if (isLoading || isLoading2) return <Spinner />;
-  const emp = empleados.empleados;
 
-  const fullList = emp.length === listaEmp.length;
+  const fullList = empleados.length === listaEmp.length;
 
   const onSubmit = (data) => {
     const newEmployee = { ...data };
@@ -37,7 +36,7 @@ const Horas = () => {
   return (
     <div className="grid grid-cols-1 xl:grid-cols-5 gap-x-4 gap-y-2">
       <div className="lg:col-span-2">
-        <FormAgregar onSubmit={onSubmit} fullList={fullList} emp={emp} />
+        <FormAgregar onSubmit={onSubmit} fullList={fullList} emp={empleados} />
       </div>
 
       <div className="lg:col-span-3">

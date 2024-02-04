@@ -1,12 +1,8 @@
-import Spinner from "@/components/ui/Spinner";
-
 import { DataTable } from "../../components/ui/Data-Table";
-import { columns } from "./Empleados-Columns";
+import { columns } from "./HorasEmpleados-Columns";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const ListaDeHistorial = ({ historial }) => {
-  const historialArray = historial.historial;
-
   return (
     <Card className="shadow-md">
       <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
@@ -17,7 +13,7 @@ const ListaDeHistorial = ({ historial }) => {
       <CardContent>
         <DataTable
           columns={columns}
-          data={historialArray}
+          data={historial}
           usesFacetedFilter="mes"
           filterTitle="Mes"
           paddingY={2}

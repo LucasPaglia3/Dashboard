@@ -7,7 +7,6 @@ export const columns = [
   {
     accessorKey: "nombre",
     filterFn: (row, nombre, value) => {
-      console.log(row.getValue(nombre));
       return value.includes(row.getValue(nombre));
     },
     header: "Nombre Cliente",
@@ -42,7 +41,7 @@ export const columns = [
         <div className="flex justify-center">
           <Button
             variant="outline"
-            className="p-2 flex gap-2"
+            className="p-2 flex gap-2 shadow-sm border-gray-400/40"
             onClick={() => navigate(`/clientes/${cliente.id}`)}
           >
             <Eye /> Detalles
