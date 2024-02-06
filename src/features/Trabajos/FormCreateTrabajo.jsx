@@ -13,6 +13,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import {
   Command,
@@ -44,6 +45,8 @@ import { useForm } from "react-hook-form";
 import { useClientes } from "../Clientes/useClientes";
 import { cn } from "@/lib/utils";
 
+import { toast } from "react-toastify";
+
 import { useCreateTrabajo } from "./useCreateTrabajo";
 
 const FormCreateTrabajo = () => {
@@ -63,6 +66,9 @@ const FormCreateTrabajo = () => {
   });
 
   const onSubmit = (data) => {
+    if (!data.idCliente) {
+      toast.error("Seleccione un cliente!");
+    }
     createTrabajo(data, {
       onSuccess: () => {
         setOpen(!open);
@@ -131,14 +137,7 @@ const FormCreateTrabajo = () => {
                         </FormControl>
                       </PopoverTrigger>
                       <PopoverContent className="w-[200px] p-0">
-                        <Command
-                          {...form.register("idCliente", {
-                            required: {
-                              value: true,
-                              message: "Elegí un cliente!",
-                            },
-                          })}
-                        >
+                        <Command {...form.register("idCliente")}>
                           <CommandInput placeholder="Busca un cliente..." />
                           <CommandEmpty>No existe ese cliente.</CommandEmpty>
                           <CommandGroup>
@@ -148,6 +147,7 @@ const FormCreateTrabajo = () => {
                                 key={cliente.value}
                                 onSelect={() => {
                                   form.setValue("idCliente", cliente.value);
+                                  console.log(form.getValues("idCliente"));
                                 }}
                               >
                                 <Check
