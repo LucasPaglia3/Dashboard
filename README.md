@@ -1,8 +1,17 @@
-# React + Vite
+# Dashboard Administrativo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
+Esta es una aplicación administrativa desarrollada para una empresa especializada en motores y frenos electromagnéticos. Surgió con la intención de abordar problemas de gestión y administración dentro de la empresa. La aplicación permite la gestión y edición de datos relacionados con clientes, empleados y trabajos, realizados o por realizar, para cada cliente. Además, ofrece la funcionalidad de generar archivos PDF mensuales y quincenales que detallan las horas trabajadas por cada empleado. 
 
-Currently, two official plugins are available:
+## Tecnologías utilizadas
+- Vite
+- React
+- React-Query
+- Tailwind CSS
+- Supabase
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Prueb la app
+Puedes probar una demo de la aplicación [aquí](enlace-a-demo).
+
+## Contacto
+Para más información, podés contactarme via email a: lucaspaglia3@gmail.com o enviarme un mensaje directo a mi LinkedIn [https://www.linkedin.com/in/lucas-paglia/].
