@@ -7,13 +7,20 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Input } from "@/components/ui/input";
 
 import { useLogin } from "@/features/Autenticación/useLogin";
+import { HoverCard } from "@radix-ui/react-hover-card";
 import { useForm } from "react-hook-form";
 
 const FormLogin = () => {
-  const form = useForm();
+  const form = useForm({
+    defaultValues: {
+      email: "demo@mail.com",
+      password: "123456",
+    },
+  });
 
   const { login, isLoggingIn } = useLogin();
   const onSubmit = (data) => {
@@ -82,7 +89,32 @@ const FormLogin = () => {
             <Button type="submit" variant="blue" disabled={isLoggingIn}>
               {!isLoggingIn ? "Ingresar" : <Spinner isForButton={true} />}
             </Button>
-            <Button variant="link">Olvidé mi contraseña</Button>
+
+            <HoverCard openDelay={0.1}>
+              <HoverCardTrigger asChild>
+                <span
+                  className="self-center
+                  font-semibold
+                  text-sm
+                  underline
+                  text-primary
+                  underline-offset-4"
+                >
+                  Atención! Esta app es una demo.
+                </span>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-80">
+                <div className="flex flex-col items-center pt-2">
+                  <h3 className="text-md">
+                    Todos los datos son falsos. Para ingresar:
+                  </h3>
+                  <ul>
+                    <li>Usuario: demo@mail.com</li>
+                    <li>Contraseña: 123456</li>
+                  </ul>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
           </div>
         </form>
       </div>

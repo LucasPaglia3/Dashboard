@@ -16,12 +16,7 @@ const ListaEmpleados = () => {
         <h1 className="text-3xl font-semibold">Lista de Empleados</h1>
       </div>
       <div className="w-auto">
-        <DataTable
-          data={empleados}
-          columns={columns}
-          paddingY={2}
-          pageSize={10}
-        />
+        <DataTable data={empleados} columns={columns} pageSize={10} />
       </div>
     </div>
   );

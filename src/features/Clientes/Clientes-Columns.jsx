@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Eye } from "lucide-react";
+import { Info } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -44,7 +44,7 @@ export const columns = [
             className="p-2 flex gap-2 shadow-sm border-gray-400/40"
             onClick={() => navigate(`/clientes/${cliente.id}`)}
           >
-            <Eye /> Detalles
+            <Info /> Detalles
           </Button>
         </div>
       );
