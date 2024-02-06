@@ -8,7 +8,7 @@ const ListaTrabajos = ({ trabajos }) => {
       <DataTable
         columns={columns}
         data={trabajos}
-        pageSize={10}
+        pageSize={7}
         usesFacetedFilter="tipo"
         filterTitle="Tipo"
       />
