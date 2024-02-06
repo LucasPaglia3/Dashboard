@@ -19,7 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { DataTableFacetedFilter } from "./Data-Table-Faceted-Filter";
 
-import { meses } from "../../features/Empleados/Filters";
+import { meses } from "../../features/Empleados/Filters.jsx";
 
 import { X } from "lucide-react";
 import { useState } from "react";
