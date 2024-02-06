@@ -14,4 +14,4 @@ Esta es una aplicación administrativa desarrollada para una empresa especializa
 Puedes probar una demo de la aplicación [aquí](enlace-a-demo).
 
 ## Contacto
-Para más información, podés contactarme via email a: lucaspaglia3@gmail.com o enviarme un mensaje directo a mi LinkedIn [https://www.linkedin.com/in/lucas-paglia/].
+Para más información, podés contactarme via email a: lucaspaglia3@gmail.com o enviarme un mensaje directo a mi LinkedIn https://www.linkedin.com/in/lucas-paglia/.
