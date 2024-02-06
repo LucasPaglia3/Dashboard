@@ -99,6 +99,35 @@ const EditCliente = ({ cliente = {} }) => {
                 )}
               />
               <FormField
+                className="grow"
+                name="web"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem className="flex items-center">
+                    <div className="grid grid-cols-6 items-center gap-4">
+                      <FormLabel
+                        htmlFor="web"
+                        className="col-span-1 text-right"
+                      >
+                        Página web
+                      </FormLabel>
+                      <Input
+                        placeholder="web"
+                        className="col-span-3 w-auto"
+                        {...form.register("web", {
+                          required: {
+                            value: true,
+                            message: "Ingrese un web!",
+                          },
+                        })}
+                        {...field}
+                      />
+                      <FormMessage className="col-span-2" />
+                    </div>
+                  </FormItem>
+                )}
+              />
+              <FormField
                 name="email"
                 control={form.control}
                 render={({ field }) => (
