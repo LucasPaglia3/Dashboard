@@ -3,10 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 
 export const useTrabajoId = () => {
-  const { urlId } = useParams();
+  const { url_id } = useParams();
   const { data: trabajo, isPending: isLoading } = useQuery({
-    queryKey: ["trabajos", urlId],
-    queryFn: () => getTrabajoUrlId(urlId),
+    queryKey: ["trabajos", url_id],
+    queryFn: () => getTrabajoUrlId(url_id),
     retry: false,
   });
 

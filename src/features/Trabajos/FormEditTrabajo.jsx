@@ -71,7 +71,7 @@ const FormEditTrabajo = ({ trabajo = {} }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="blue" classname="flex items-center">
+        <Button variant="blue" className="flex items-center">
           <Pencil className="mr-1 h-5 w-5" />
           <span>Editar {trabajo.tipo}</span>
         </Button>

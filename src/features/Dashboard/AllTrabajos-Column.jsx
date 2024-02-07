@@ -94,7 +94,7 @@ export const columns = [
         <Button
           variant="outline"
           className="p-2 flex gap-2 shadow-sm border-gray-400/40"
-          onClick={() => navigate(`/trabajos/${trabajoId.urlId}`)}
+          onClick={() => navigate(`/trabajos/${trabajoId.url_id}`)}
         >
           <Info /> Detalles
         </Button>

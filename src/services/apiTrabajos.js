@@ -12,28 +12,28 @@ export const getAllTrabajos = async () => {
 };
 
 export const getAllTrabajosUrlId = async () => {
-  let { data, error } = await supabase.from("trabajos").select("urlId");
+  let { data, error } = await supabase.from("trabajos").select("url_id");
 
   if (error) {
     throw new Error(
-      "urlId of table Trabajos could not be loaded." + error.message
+      "url_id of table Trabajos could not be loaded." + error.message
     );
   }
 
-  const urlIds = data.map((id) => id.urlId); // devuelve un array con todos los 'urlId' que hay en la tabla.
+  const url_ids = data.map((id) => id.url_id); // devuelve un array con todos los 'url_id' que hay en la tabla.
 
-  return urlIds;
+  return url_ids;
 };
 
-export const getTrabajoUrlId = async (urlId) => {
+export const getTrabajoUrlId = async (url_id) => {
   let { data: trabajo, error } = await supabase
     .from("trabajos")
     .select("*")
-    .eq("urlId", urlId)
+    .eq("url_id", url_id)
     .single();
 
   if (error) {
-    throw new Error("Could not get trabajo by urlId" + error.message);
+    throw new Error("Could not get trabajo by url_id" + error.message);
   }
 
   return trabajo;
@@ -54,11 +54,11 @@ export const getTrabajoClientId = async (clientId) => {
 };
 
 export const createTrabajo = async (newTrabajo) => {
-  const existingUrlId = await getAllTrabajosUrlId(); // Conseguimos todos los valores de la columna urlId.
+  const existingUrlId = await getAllTrabajosUrlId(); // Conseguimos todos los valores de la columna url_id.
   const randomId = generateRandomId(5); // Generamos un idRandom de 4 digitos.
 
   if (existingUrlId.includes(randomId)) {
-    // Si existe el id generado en la columna de urlId, tiramos un error.
+    // Si existe el id generado en la columna de url_id, tiramos un error.
     const error = new Error(
       "El id generado para este trabajo ya existe, intente nuevamente..."
     );
@@ -67,7 +67,7 @@ export const createTrabajo = async (newTrabajo) => {
 
   let { data, error } = await supabase
     .from("trabajos")
-    .insert([{ ...newTrabajo, urlId: randomId, estado: "espera" }])
+    .insert([{ ...newTrabajo, url_id: randomId, estado: "espera" }])
     .select();
 
   console.log(error);
@@ -119,4 +119,15 @@ export const editTrabajo = async (newTrabajo, idToEdit) => {
   }
 
   return data;
+};
+
+export const updateTareas = async (urlId, newTarea) => {
+  console.log(urlId);
+  console.log(newTarea);
+  let { data, error } = await supabase.rpc("append_json", {
+    url_id: urlId,
+    new_json: newTarea,
+  });
+  if (error) console.error(error);
+  else console.log(data);
 };
