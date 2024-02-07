@@ -11,7 +11,7 @@ Esta es una aplicación administrativa desarrollada para una empresa especializa
 - Supabase
 
 ## Prueb la app
-Puedes probar una demo de la aplicación [aquí](enlace-a-demo).
+Puedes probar una demo de la aplicación [[aquí](enlace-a-demo)](https://dashboard-pi-navy.vercel.app/).
 
 ## Contacto
 Para más información, podés contactarme via email a: lucaspaglia3@gmail.com o enviarme un mensaje directo a mi LinkedIn https://www.linkedin.com/in/lucas-paglia/.
