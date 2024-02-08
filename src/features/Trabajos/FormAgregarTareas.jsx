@@ -15,31 +15,27 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { updateTareas } from "@/services/apiTrabajos";
 
 import { Plus } from "lucide-react";
 import { useState } from "react";
 
 import { useForm } from "react-hook-form";
-import { useEditTarea } from "./useEditTarea";
+
+import Spinner from "@/components/ui/Spinner";
 
 const FormAgregarTareas = () => {
   const [open, setOpen] = useState();
   const form = useForm({
     defaultValues: {
-      costo: "0",
+      costo: "1",
       tarea: "",
     },
   });
 
-  const { updateTarea, isUpdating } = useEditTarea();
-
-  const onSubmit = (data) => {
-    updateTarea({ ...data, fecha: "2222" });
-  };
+  const onSubmit = (data) => {};
 
   const onCancel = () => {
-    form.reset({ costo: 0, tarea: "" });
+    form.reset({ costo: 1, tarea: "" });
     setOpen(!open);
   };
   return (
@@ -113,9 +109,15 @@ const FormAgregarTareas = () => {
               )}
             />
             <div className="flex gap-1">
-              <Button onClick={onCancel}>Cancelar</Button>
-              <Button type="submit" variant="confirm">
-                Guardar
+              <Button onClick={onCancel} /* disabled={isUpdating} */>
+                Cancelar
+              </Button>
+              <Button
+                type="submit"
+                variant="confirm" /* disabled={isUpdating} */
+              >
+                {/* {isUpdating ? <Spinner isForButton={true} /> : " */}Guardar
+                {/* "} */}
               </Button>
             </div>
           </form>

@@ -27,7 +27,7 @@ const Trabajo = ({ trabajo }) => {
         <CardImagenTrabajo trabajo={trabajo} />
         <CardDatosTrabajo trabajo={trabajo} cliente={cliente} />
         <div className="col-span-5">
-          <CardTareasRealizadas trabajo={trabajo} />
+          <CardTareasRealizadas />
         </div>
       </CardContent>
     </Card>

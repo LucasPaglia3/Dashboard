@@ -120,14 +120,3 @@ export const editTrabajo = async (newTrabajo, idToEdit) => {
 
   return data;
 };
-
-export const updateTareas = async (urlId, newTarea) => {
-  console.log(urlId);
-  console.log(newTarea);
-  let { data, error } = await supabase.rpc("append_json", {
-    url_id: urlId,
-    new_json: newTarea,
-  });
-  if (error) console.error(error);
-  else console.log(data);
-};

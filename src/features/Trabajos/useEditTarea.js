@@ -6,6 +6,7 @@ export const useEditTarea = () => {
   const { url_id } = useParams();
   const { mutate: updateTarea, isPending: isUpdating } = useMutation({
     mutationFn: (newTarea) => apiUpdateTarea(url_id, newTarea),
+    mutationKey: ["trabajos"],
     onSuccess: (data) => {
       console.log(data);
     },
