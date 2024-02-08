@@ -10,7 +10,7 @@ Esta es una aplicación administrativa desarrollada para una empresa especializa
 - Tailwind CSS
 - Supabase
 
-## Prueb la app
+## Prueba la app
 Puedes probar una demo de la aplicación https://dashboard-pi-navy.vercel.app/.
 
 ## Contacto
