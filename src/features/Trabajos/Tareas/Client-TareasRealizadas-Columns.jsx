@@ -6,23 +6,13 @@ export const columns = [
     header: "Tarea",
   },
   {
-    accessorKey: "costo",
-    header: "Costo",
-  },
-  {
     accessorKey: "fecha",
     header: "Fecha de realización",
     cell: ({ row }) => {
       const timestampz = row.getValue("fecha");
       const formatted = formatDate(timestampz);
 
-      return (
-        <div>
-          {row.getValue("fechaSalida") === null
-            ? "No entregado aún"
-            : formatted}
-        </div>
-      );
+      return <div className="ml-8">{formatted}</div>;
     },
   },
 ];

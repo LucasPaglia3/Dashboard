@@ -2,7 +2,7 @@ import { DataTable } from "@/components/ui/Data-Table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { columns } from "./TareasRealizadas-Columns";
 import FormAgregarTareas from "./FormAgregarTareas";
-import { useTareaById } from "./Tareas/useTareaById";
+import { useTareaById } from "./useTareaById";
 import Spinner from "@/components/ui/Spinner";
 
 const TareasRealizadas = () => {

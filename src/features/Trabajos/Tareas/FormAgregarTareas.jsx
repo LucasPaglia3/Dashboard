@@ -22,17 +22,27 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import Spinner from "@/components/ui/Spinner";
+import { useCreateTarea } from "./useCreateTarea";
 
 const FormAgregarTareas = () => {
   const [open, setOpen] = useState();
   const form = useForm({
     defaultValues: {
-      costo: "1",
+      costo: "",
       tarea: "",
     },
   });
 
-  const onSubmit = (data) => {};
+  const { createTarea, isCreating } = useCreateTarea();
+
+  const onSubmit = (newTarea) => {
+    createTarea(newTarea, {
+      onSuccess: () => {
+        setOpen(!open);
+        form.reset();
+      },
+    });
+  };
 
   const onCancel = () => {
     form.reset({ costo: 1, tarea: "" });
@@ -109,15 +119,11 @@ const FormAgregarTareas = () => {
               )}
             />
             <div className="flex gap-1">
-              <Button onClick={onCancel} /* disabled={isUpdating} */>
+              <Button onClick={onCancel} disabled={isCreating}>
                 Cancelar
               </Button>
-              <Button
-                type="submit"
-                variant="confirm" /* disabled={isUpdating} */
-              >
-                {/* {isUpdating ? <Spinner isForButton={true} /> : " */}Guardar
-                {/* "} */}
+              <Button type="submit" variant="confirm" disabled={isCreating}>
+                {isCreating ? <Spinner isForButton={true} /> : "Guardar"}
               </Button>
             </div>
           </form>
