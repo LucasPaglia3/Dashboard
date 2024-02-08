@@ -6,7 +6,7 @@ import FormEditTrabajo from "./FormEditTrabajo";
 import Spinner from "@/components/ui/Spinner";
 import CardDatosTrabajo from "./CardDatosTrabajo";
 import CardImagenTrabajo from "./CardImagenTrabajo";
-import CardTareasRealizadas from "./CardTareasRealizadas";
+import CardTareasRealizadas from "./Tareas/CardTareasRealizadas";
 
 const Trabajo = ({ trabajo }) => {
   const { cliente, isLoading } = useClienteId(trabajo.idCliente);

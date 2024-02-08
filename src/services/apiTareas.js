@@ -15,10 +15,11 @@ export const getTareasById = async (urlId) => {
   return data;
 };
 
-export const createTarea = async (newTarea) => {
+export const createTarea = async (newTarea, url_id) => {
+  console.log(newTarea, url_id);
   let { data, error } = await supabase
     .from("tareas")
-    .insert({ ...newTarea })
+    .insert({ ...newTarea, trabajo: url_id })
     .select();
 
   if (error) {
@@ -26,4 +27,12 @@ export const createTarea = async (newTarea) => {
   }
 
   return data;
+};
+
+export const deleteTarea = async (tareaId) => {
+  const { error } = await supabase.from("tareas").delete().eq("id", tareaId);
+
+  if (error) {
+    throw new Error("Could not delete Tarea. " + error.message);
+  }
 };
