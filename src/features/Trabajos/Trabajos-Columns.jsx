@@ -81,7 +81,7 @@ export const columns = [
         <Button
           variant="outline"
           className="p-2 flex gap-2"
-          onClick={() => navigate(`/trabajos/${trabajoId.urlId}`)}
+          onClick={() => navigate(`/trabajos/${trabajoId.url_id}`)}
         >
           <Eye /> Detalles
         </Button>

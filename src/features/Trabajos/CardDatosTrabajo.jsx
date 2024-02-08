@@ -10,7 +10,7 @@ import { Hash } from "lucide-react";
 
 const CardDatosTrabajo = ({ trabajo, cliente }) => {
   return (
-    <Card className="shadow-md col-span-1 lg:col-span-3 h-full">
+    <Card className="shadow-md col-span-1 lg:col-span-3 h-[32rem]">
       <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
         <CardTitle className="text-md font-medium">
           Información sobre el trabajo
@@ -21,11 +21,18 @@ const CardDatosTrabajo = ({ trabajo, cliente }) => {
           <h2 className="text-3xl font-semibold">
             {trabajo.tipo} para {cliente.nombre}
           </h2>
-          <div className="text-xl font-semibold flex items-center gap-3">
-            Estado:
-            <Badge variant={trabajo.estado}>
-              {trabajo.estado.toUpperCase()}
-            </Badge>
+          <div className="text-xl font-semibold flex items-center gap-5">
+            <div className="flex gap-3">
+              Estado:
+              <Badge variant={trabajo.estado}>
+                {trabajo.estado.toUpperCase()}
+              </Badge>
+            </div>
+            <Separator orientation="vertical" />
+            <div className="flex gap-2">
+              ID de trabajo:
+              <Badge>{trabajo.url_id}</Badge>
+            </div>
           </div>
 
           <Separator />

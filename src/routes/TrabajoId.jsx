@@ -6,6 +6,7 @@ import { useTrabajoId } from "@/features/Trabajos/useTrabajoId";
 
 const TrabajoId = () => {
   const { trabajo, isLoading } = useTrabajoId();
+  console.log(trabajo);
 
   if (isLoading)
     return (
@@ -19,7 +20,6 @@ const TrabajoId = () => {
       <PageHeader title={"Trabajo"} />
       <Separator />
       <Trabajo trabajo={trabajo} />
-      {/* <CreateTrabajo />  // TODO: Usar en /dashboard */}
     </div>
   );
 };

@@ -16,6 +16,7 @@ import Dashboard from "./routes/Dashboard";
 import Login from "./routes/Login";
 import ProtectedRoute from "./components/ui/ProtectedRoute";
 import Empleados from "./routes/Empleados";
+import TrabajoIdCliente from "./routes/TrabajoIdCliente.jsx";
 
 const queryClient = new QueryClient();
 
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
         element: <ClienteId />,
       },
       {
-        path: "trabajos/:urlId",
+        path: "trabajos/:url_id",
         element: <TrabajoId />,
       },
     ],
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: ":url_id",
+    element: <TrabajoIdCliente />,
   },
 ]);
 

@@ -8,8 +8,6 @@ const ListaEmpleados = () => {
 
   if (isLoading) return <Spinner />;
 
-  console.log(empleados);
-
   return (
     <div className="flex flex-col">
       <div className="flex justify-between">
