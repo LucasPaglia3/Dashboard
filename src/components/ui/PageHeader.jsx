@@ -9,6 +9,7 @@ import { Building2 } from "lucide-react";
 import { LayoutDashboard } from "lucide-react";
 import { Menu } from "lucide-react";
 import { X } from "lucide-react";
+import CollapsableSideBarItem from "./CollapsableSidebarItem";
 
 const PageHeader = ({ title }) => {
   const [openNav, setOpenNav] = useState(false);
@@ -51,17 +52,9 @@ const PageHeader = ({ title }) => {
             Clientes
           </NavLink>
           <Separator />
-          <NavLink
-            className={({ isActive }) =>
-              isActive
-                ? "flex items-center w-[12rem] rounded-lg text-2xl font-semibold gap-2 bg-indigo-100 text-blue-800"
-                : "flex items-center w-[12rem] text-2xl font-semibold gap-2"
-            }
-            to={"/empleados/horas"}
-          >
-            <Users />
+          <CollapsableSideBarItem icon={<Users />}>
             Empleados
-          </NavLink>
+          </CollapsableSideBarItem>
           <Separator />
         </div>
       )}

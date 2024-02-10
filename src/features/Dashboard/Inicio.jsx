@@ -31,9 +31,9 @@ const Inicio = () => {
   ).length;
 
   return (
-    <Card className="w-full h-full shadow-md">
+    <Card className="w-full lg:h-full md:h-max shadow-md">
       <CardContent className="pt-4 flex flex-col">
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           <div>
             <Card className="shadow-md">
               <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
@@ -47,7 +47,7 @@ const Inicio = () => {
               </CardContent>
             </Card>
           </div>
-          <div className="grid grid-cols-3 place-items-center col-span-2 border py-3 rounded-md shadow-md">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 place-items-center col-span-2 border py-3 rounded-md shadow-md gap-3">
             <CardStats
               title={"Motores Entregados"}
               data={motoresEntregados}
