@@ -4,7 +4,7 @@ import { CalendarClock } from "lucide-react";
 import { ChevronUp } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
-const CollapsableSideBarItem = ({ children, icon, path }) => {
+const CollapsableSideBarItem = ({ children, icon }) => {
   const [open, setOpen] = useState(false);
 
   return (
