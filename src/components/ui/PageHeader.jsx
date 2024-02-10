@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { Button } from "./button";
@@ -13,6 +13,20 @@ import CollapsableSideBarItem from "./CollapsableSidebarItem";
 
 const PageHeader = ({ title }) => {
   const [openNav, setOpenNav] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1024) {
+        setOpenNav(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [setOpenNav]);
 
   return (
     <>
@@ -29,24 +43,24 @@ const PageHeader = ({ title }) => {
           </div>
           <Separator />
           <NavLink
+            to="/"
             className={({ isActive }) =>
               isActive
                 ? "flex items-center w-[12rem] rounded-lg text-2xl font-semibold gap-2 bg-indigo-100 text-blue-800"
                 : "flex items-center w-[12rem] text-2xl font-semibold gap-2"
             }
-            to={"/"}
           >
             <LayoutDashboard />
             Inicio
           </NavLink>
           <Separator />
           <NavLink
+            to="/clientes"
             className={({ isActive }) =>
               isActive
                 ? "flex items-center w-[12rem] rounded-lg text-2xl font-semibold gap-2 bg-indigo-100 text-blue-800"
                 : "flex items-center w-[12rem] text-2xl font-semibold gap-2"
             }
-            to={"/clientes"}
           >
             <Building2 />
             Clientes
