@@ -18,7 +18,7 @@ const CollapsableSideBarItem = ({ children, icon }) => {
         }
       >
         {icon}
-        <span className=" hidden lg:block lg:text-xl lg:font-semibold select-none">
+        <span className=" block text-xl font-semibold select-none">
           {children}
         </span>
         <ChevronUp
@@ -32,28 +32,28 @@ const CollapsableSideBarItem = ({ children, icon }) => {
       {open && (
         <div className="flex flex-col lg:ml-5 lg:w-full p-1 gap-2">
           <NavLink
-            to="empleados"
+            to="/empleados"
             className={({ isActive }) =>
               isActive
-                ? "flex w-fit py-1 px-2 gap-3 items-center bg-indigo-100 text-blue-800 rounded-lg cursor-pointer transition-all duration-300"
-                : "flex w-fit py-1 px-2 gap-3 items-center hover:bg-indigo-100/50 hover:text-blue-600 rounded-lg cursor-pointer transition-all duration-150"
+                ? "flex w-full py-1 px-2 gap-3 items-center bg-indigo-100 text-blue-800 rounded-lg cursor-pointer transition-all duration-300"
+                : "flex w-full py-1 px-2 gap-3 items-center hover:bg-indigo-100/50 hover:text-blue-600 rounded-lg cursor-pointer transition-all duration-150"
             }
           >
             <List />
-            <span className=" hidden lg:block lg:text-lg lg:font-medium w-fit select-none">
+            <span className="block text-lg font-medium lg:block lg:text-lg lg:font-medium w-full select-none">
               Lista empleados
             </span>
           </NavLink>
           <NavLink
-            to="horas"
+            to="/horas"
             className={({ isActive }) =>
               isActive
-                ? "flex w-fit py-1 px-2 gap-3 items-center bg-indigo-100 text-blue-800 rounded-lg cursor-pointer transition-all duration-300"
-                : "flex w-fit py-1 px-2 gap-3 items-center hover:bg-indigo-100/50 hover:text-blue-600 rounded-lg cursor-pointer transition-all duration-150"
+                ? "flex w-full py-1 px-2 gap-3 items-center bg-indigo-100 text-blue-800 rounded-lg cursor-pointer transition-all duration-300"
+                : "flex w-full py-1 px-2 gap-3 items-center hover:bg-indigo-100/50 hover:text-blue-600 rounded-lg cursor-pointer transition-all duration-150"
             }
           >
             <CalendarClock />
-            <span className=" hidden lg:block lg:text-lg lg:font-medium w-fit select-none">
+            <span className="block text-lg font-medium lg:block lg:text-lg lg:font-medium w-full select-none">
               Horas de trabajo
             </span>
           </NavLink>
